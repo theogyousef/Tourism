@@ -25,7 +25,7 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
   } else {
     header("Location: login");
   }
-include "header.php";
+// include "header.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
