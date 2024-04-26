@@ -1,6 +1,6 @@
 <style>
 .footer {
-    background-color: #333333;
+    background-color: #0B2545;
     color: #ffffff;
     padding: 30px 0;
     margin-top: 30px;
@@ -254,7 +254,7 @@
       <div class="company">
         <h4>Company</h4>
         <ul>
-          <li><a href="about">About us</a></li>
+          <li><a href="about.php">About us</a></li>
         </ul>
       </div></div>
       <div class="contactUs">

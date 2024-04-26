@@ -1,0 +1,137 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #EEF4ED;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+header {
+    background-color: #0B2545;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.cart-wrap {
+    padding: 40px 0;
+}
+
+/* Table Styles */
+.table-wishlist table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wishlist th, .table-wishlist td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-wishlist th {
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+}
+
+.price, .quantity, .options {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.price a {
+    color: #134074;
+    text-decoration: none;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-selector button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #13315C;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.quantity-selector button:hover {
+    background-color: #0B2545;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.trash-icon {
+    color: #8DA9C4;
+}
+
+.thetotal {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.add-button, .checkout-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0B2545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.add-button:hover, .checkout-button:hover {
+    background-color: #134074;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .quantity-selector button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

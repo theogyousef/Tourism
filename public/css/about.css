@@ -1,0 +1,57 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #0B2545;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-section, .team-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.about-section h2, .team-section h2 {
+    color: #134074;
+    margin-bottom: 10px;
+}
+
+.team-member {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.team-member h3 {
+    color: #333;
+}
+
+.team-member p {
+    color: #666;
+}
+
+footer {
+    background-color: #0B2545;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
