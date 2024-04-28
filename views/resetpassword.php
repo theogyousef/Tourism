@@ -68,7 +68,7 @@ require_once("../includes/Dbh.php");
 
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
-                    <p class="mt-3"><a href="../views/signin.php" class="signup-link">Back to login</a></p>
+                    <p class="mt-3"><a href="../views/login.php" class="signup-link">Back to login</a></p>
                 </div>
 
             </div>
