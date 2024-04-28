@@ -17,7 +17,6 @@ if (isset($_POST["submit"])) {
     $reqgisterationsystem->signin();
 }
 
-include "header.php";
 ?>
 
 <!doctype html>
@@ -26,18 +25,13 @@ include "header.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-      <link rel="stylesheet" href="../public/CSS/signup.css">
-
-    <title>LOGIN</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/CSS/signup.css">
+    <title>Sign in</title>
 
     <style>
         <?php
-        include "../public/CSS/signup.css";
+        include "../public/CSS/signin.css";
         ?>
     </style>
 
@@ -45,55 +39,72 @@ include "header.php";
 
 <body>
 
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <h3 class="h3 mb-3 fw-bold text-center" style="margin-left:30px;">LOGIN</h3>
+    <!-- nav Bar -->
+    <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+        </nav>
+    </div>
 
-                <form method="post" name="loginForm" id="loginForm" onsubmit="validateLogin(event)" style="padding-left:30px;">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="text-center mb-4">
+                    <img src="https://egymonuments.gov.eg/Style%20Library/images/new-logo_web.png" alt="egyptlogo" style="max-width: 120px;">
+                </div>
+                <h2 class="text-center mb-4">Discover the Wonders of Egypt</h2>
+                <p class="text-center mb-4" style="font-weight: normal;">Join us and explore a world of history, mystery, and adventure.</p>
 
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingPassword" placeholder="email" name="email">
-                        <label for="floatingPassword">Email</label>
+                <div class="social-login-buttons d-grid gap-2 mb-3">
+                    <button class="btn btn-google" type="button">
+                        <img src="https://eg.hm.com/themes/custom/transac/alshaya_white_label/imgs/social-icons/google-login-logo.svg" alt="Google"> Google
+                    </button>
+                    <button class="btn btn-facebook" type="button">
+                        <img src="https://eg.hm.com/themes/custom/transac/alshaya_white_label/imgs/social-icons/facebook-login-logo.svg" alt="Facebook"> Facebook
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>Or</span>
+                </div>
+
+                <!-- Login Form -->
+                <form method="post" name="loginForm" id="loginForm">
+                    <div class="mb-3 custom-form-input">
+                        <label for="emailInput" class="form-label">EMAIL <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter *" >
                     </div>
-
-                    <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" name="pass" placeholder="password">
-                        <label for="password">Password</label>
-                        <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y pe-3" onclick="togglePasswordVisibility('password', this)" style="margin-right: 50px; margin-top : -20px;"></i>
-                  
-                        <p class="mt-4 text-left">
-                            <a href="forgetpassword" class="text-muted">Forget password?</a>
-                        </p>
+                    <div class="mb-3 custom-form-input">
+                        <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
+                        <input type="password" name="pass"  class="form-control" id="passwordInput" placeholder="Enter *">
+                        <a href="../views/forgetpassword.php" class="password-reset-link">Forgotten your password?</a>
                     </div>
-                    <div style="height: 20px;">
-                        <span id="loginErrorMessages" style="display: none;"></span>
-                    </div>
-
-                    <div class="d-grid center-btn">
-                        <input name="login" type="submit" class="btn btn-lg btn-dark" value="Log in" style="margin-top: 15px;" id="submit-button">
-
+                    <div class="d-grid">
+                        <button type="submit" name="login" class="login" id="submit-button" class="btn btn-lg start-50 rounded-pill">Sign in</button>
                     </div>
                 </form>
 
+                <div class="text-center mt-4">
+                    <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
+                    <p class="mt-3">Not a member yet? <a href="../views/signup.php" class="signup-link">Sign up</a></p>
+                </div>
 
-                <p class="mt-4 text-center">
-                    <a href="signup" class="text-muted">Create an account ?</a>
+                <p class="disclaimer-text">
+                    We cares about the protection of your personal data and, where strictly
+                    necessary, uses them with the utmost care, in compliance with the regulations,
+                    in order to provide you with services and to answer your requests, to customize
+                    contents and offers, to send you promotional communications, to measure the
+                    effectiveness of services and to create new ones, to detect anomalies and to
+                    comply with legal obligations.
                 </p>
-
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../public/JS/Registeration.js"></script>
-    <script src="../public/JS/togglePassword.js"></script>
-
-    <footer>
-        <?php
-        include "footer.php";
-        ?>
-    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
