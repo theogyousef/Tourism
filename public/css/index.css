@@ -575,33 +575,6 @@
     word-break: keep-all;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 5px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .product-title.green {
     color: green;
 }
@@ -628,7 +601,7 @@
 }
 
 .navbar-nav .nav-link i {
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .navbar-nav .nav-link span {
@@ -741,4 +714,121 @@ body {
 
 .social-icons {
     font-size: 24px;
+}
+
+.dropdown-menu-large {
+    min-width: 1300px;
+    padding: 20px;
+}
+
+.column-dropdown {
+    column-count: 3;
+}
+
+.dropdown-header {
+    color: #13315C;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.dropdown-item {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #000;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link i {
+    font-size: 22px;
+}
+
+.card {
+    border: none;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    width: 250px;
+    margin: 0 15px 15px 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0.5rem;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.column-dropdown {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.list-section {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.dropdown-header {
+    font-size: 16px;
+    color: #13315C;
+    font-weight: bold;
+    margin-bottom: 12px;
+    margin-left: -12px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 0;
+    color: #134074;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    text-decoration: underline;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 5px 0;
+    color: #13315C;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    text-decoration: underline;
 }

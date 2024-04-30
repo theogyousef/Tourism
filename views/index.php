@@ -4,16 +4,16 @@ $usercontroller = new usercontroller();
 
 $conn = $usercontroller->getConn();
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
-  $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
-  $row = mysqli_fetch_assoc($result);
-  $_SESSION["login"] = true;
-  $_SESSION["id"] = $row["id"];
+    $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION["login"] = true;
+    $_SESSION["id"] = $row["id"];
 } else if (!empty($_SESSION["id"])) {
-  $id = $_SESSION["id"];
-  $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
-  $row = mysqli_fetch_assoc($result);
+    $id = $_SESSION["id"];
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $row = mysqli_fetch_assoc($result);
 } else {
-  header("Location: login");
+    header("Location: login");
 }
 
 // if (!empty($_SESSION['products']) && $row['guest'] == 1) {
@@ -21,7 +21,7 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
 // }
 
 if ($row["deactivated"] == 1) {
-  header("Location: deactivated");
+    header("Location: deactivated");
 }
 
 
@@ -41,24 +41,73 @@ if ($row["deactivated"] == 1) {
     <style>
         <?php include "../public/css/index.css" ?>
     </style>
+
 </head>
 
 <body>
- <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://egymonuments.gov.eg/Style%20Library/images/new-logo_web.png" alt="Egypt Tourism" height="40" style="font-size: 200px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Where to go</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Where to go
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-large" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <h6 class="dropdown-header fs-5 fw-bold">Choose your destination</h6>
+                                <p class="ms-2 text-muted">Sea, mountains, cities and national parks: in Egypt every destination is a unique experience to be fully enjoyed.</p>
+                            </li>
+                            <div class="d-flex column-dropdown">
+                                <div class="list-section">
+                                    <h6 class="dropdown-header">Cities</h6>
+                                    <a class="dropdown-item" href="#">Cairo</a>
+                                    <a class="dropdown-item" href="#">Alexandria</a>
+                                    <a class="dropdown-item" href="#">Luxor</a>
+                                    <a class="dropdown-link" href="#">See all →</a>
+                                </div>
+                                <div class="list-section">
+                                    <h6 class="dropdown-header">Regions</h6>
+                                    <a class="dropdown-item" href="#">Nile Delta</a>
+                                    <a class="dropdown-item" href="#">Sinai Peninsula</a>
+                                    <a class="dropdown-item" href="#">Red Sea Coast</a>
+                                    <a class="dropdown-link" href="#">See all →</a>
+                                </div>
+                                <div class="list-section">
+                                    <h6 class="dropdown-header">Tourist Destinations</h6>
+                                    <a class="dropdown-item" href="#">Pyramids of Giza</a>
+                                    <a class="dropdown-item" href="#">Karnak Temple</a>
+                                    <a class="dropdown-item" href="#">Valley of the Kings</a>
+                                    <a class="dropdown-link" href="#">See all →</a>
+                                </div>
+                                <div class="container my-4">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <img src="https://images.memphistours.com/large/528001641d46401fd0294117d7849411.jpg" class="card-img-top" alt="Villages">
+                                                <div class="card-body text-center">
+                                                    <p class="card-text">Mountains</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <img src="https://lp-cms-production.imgix.net/2019-06/GettyImages-465987354_high.jpg?auto=format&w=1920&h=640&fit=crop&crop=faces,edges&q=75" class="card-img-top" alt="UNESCO sites">
+                                                <div class="card-body text-center">
+                                                    <p class="card-text">National parks</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">What to do</a>
@@ -70,27 +119,33 @@ if ($row["deactivated"] == 1) {
                         <a class="nav-link" href="#">Information</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto align-items-center">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> <i class="bi bi-search"></i><br>Search</a>
+                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-heart"></i><br>Favorites</a>
+                        <a class="nav-link" href="#"><i class="bi bi-heart"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <?php 
- if (!empty($_SESSION['products']) && $row['guest'] == 1) {
-    echo ' <a class="nav-link" href="login"><i class="bi bi-person"></i><br>Sign in</a> ' ;
- }else {
-    echo ' <a class="nav-link" href="logout"><i class="bi bi-person"></i><br>Log out </a> ' ;
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown" href="#" id="navbarDropdownSignIn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownSignIn">
+                            <div class="list-section">
+                                <h6 class="dropdown-header">Profile</h6>
 
- }
-                        ?>
+                                <li><a class="dropdown-item" href="login.php">Login</a></li>
+                                <li><a class="dropdown-item" href="register.php">Register</a></li>
+                            </div>
+
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -113,7 +168,7 @@ if ($row["deactivated"] == 1) {
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="../public/photos/aswan1.jpg" class="d-block w-100" alt="..."width="100%">
+                <img src="../public/photos/aswan1.jpg" class="d-block w-100" alt="..." width="100%">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -124,7 +179,7 @@ if ($row["deactivated"] == 1) {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div> 
+    </div>
 
     <div class="container-simple-text with-background-image" style="background-image: url('https://tourismmedia.italia.it/is/image/mitur/landscape_1-100-1?wid=2880&amp;hei=1280&amp;fit=constrain,1&amp;fmt=webp'); background-size: cover; height: 300px;">
         <div class="container">
@@ -152,7 +207,7 @@ if ($row["deactivated"] == 1) {
                         <img src="https://cityedgedevelopments.com/uploads/destinations/destination_4/cover_image03e4e8bd-0f1d-4a40-8dbe-fc350a64da36.jpg" alt="Clickable Image" class="img-fluid mx-auto" height="300px">
                         <button class="btn mitur btn-lg position-absolute bottom-0 start-50 translate-middle-x rounded-pill" style="bottom: -20px; background-color: #0B2545; color: white; margin-bottom: -60PX;" id="shopnow">
                             BOOK NOW
-                        </button> 
+                        </button>
                     </a>
                 </div>
             </div>
@@ -167,7 +222,7 @@ if ($row["deactivated"] == 1) {
                 <h1>Top Cities to Visit in Egypt</h1>
             </div>
         </div>
-      
+
         <div class="container products-carousel">
             <div class="row">
                 <div class="slider">
@@ -338,8 +393,8 @@ if ($row["deactivated"] == 1) {
 
         </div>
     </div>
-
-    <!-- <div>
+    <!-- map -->
+    <div>
         <section class="featured-destinations py-5">
             <div class="container">
                 <h6 class="text-center mb-4" style="font-weight: normal;">EGYPT</h6>
@@ -351,7 +406,8 @@ if ($row["deactivated"] == 1) {
                 </div>
             </div>
         </section>
-    </div> -->
+    </div>
+
     <div class="row">
         <div class="col-md text-center">
             <h6 class="text-center mb-4" style="font-weight: normal;">BOOK</h6>
