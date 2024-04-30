@@ -81,7 +81,7 @@ class Forgetpassword extends Model
                 $update_query = mysqli_query($conn, "UPDATE users SET otp = 0 WHERE otp = '$otp'");
 
                 if ($update_query) {
-                    header("Location: resetpassword.php");
+                    header("Location: resetpassword");
                     echo "OTP successfully updated to 0.";
                 } else {
                     echo "Error updating OTP: " . mysqli_error($conn);
@@ -94,7 +94,8 @@ class Forgetpassword extends Model
 
 
     public function newpassword()
-    {
+    { echo '<script>alert(" wasal controlleer")</script>'; 
+    
         $conn = $this->getConn();
 
 
@@ -103,7 +104,9 @@ class Forgetpassword extends Model
             $confirmpassword = $_POST["confirmpassword"];
 
             $email = $_SESSION['email'];
-
+            echo '<script>alert(" email : '. $email  . ' ")</script>'; 
+    
+           
             if ($password == $confirmpassword) {
 
                 $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");

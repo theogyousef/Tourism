@@ -27,7 +27,7 @@ class Routere
         }
         //  echo $path;
         //  echo "id = " .$id;
-        session_start();
+        //session_start();
 
 
 
@@ -52,6 +52,13 @@ class Routere
         }
         elseif ($path === '/tourism/views/forgetpassword') {
             require '../views/forgetpassword.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/otp') {
+            require '../views/otp.php';
+            exit();
+        } elseif ($path === '/tourism/views/resetpassword') {
+            require '../views/resetpassword.php';
             exit();
         }
         elseif ($path === '/tourism/views/logout') {
