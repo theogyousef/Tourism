@@ -89,7 +89,7 @@ if (isset($_POST["submit"])) {
 
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
-                    <p class="mt-3">Not a member yet? <a href="../views/signup.php" class="signup-link">Sign up</a></p>
+                    <p class="mt-3">Not a member yet? <a href="signup" class="signup-link">Sign up</a></p>
                 </div>
 
                 <p class="disclaimer-text">

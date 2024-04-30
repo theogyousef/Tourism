@@ -105,7 +105,7 @@ if (isset($_POST["submit"])) {
 
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto; margin-right: 40px;" />
-                    <p class="mt-3">Already have an account? <a href="../views/login.php" class="signup-link">Sign in</a></p>
+                    <p class="mt-3">Already have an account? <a href="login" class="signup-link">Sign in</a></p>
                 </div>
 
                 <p class="disclaimer-text">
