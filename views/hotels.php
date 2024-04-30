@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/collections.css">
+    <link rel="stylesheet" href="../public/css/hotels.css">
 </head>
 
 <body>
@@ -75,6 +75,26 @@
 
         <div class="container grid-container">
             <!-- Product cards will be dynamically generated here -->
+            <div class="col-md-4">
+                <div class="card mb-4 product-card">
+                    <img src="../public/photos/JW_Marriott.jpg" class="card-img-top" alt="Hotel Image">
+                    <div class="card-body">
+                        <h5 class="card-title">JW Marriott</h5>
+                        <p class="card-text">Perched gracefully by the Nile, JW Marriott Egypt epitomizes luxury,
+                            offering a refined escape where every detail is meticulously curated for an unparalleled experience.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: 4.5K per night</li>
+                            <li class="list-group-item">Availability: In Stock</li>
+                            <li class="list-group-item">Category: Luxury</li>
+                        </ul>
+                        <div class="product-actions mt-3">
+                            <button class="btn btn-primary">Book Now</button>
+                            <button class="btn btn-secondary">Add to Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
