@@ -1,5 +1,5 @@
 <?php
-session_start(); //activate only when hosted 
+//session_start(); //activate only when hosted 
 require_once("../includes/Dbh.php");
 abstract class Model
 {
@@ -15,7 +15,6 @@ abstract class Model
     {
         return $this->conn;
     }
-
 
 }
 

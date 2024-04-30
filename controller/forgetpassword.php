@@ -56,7 +56,7 @@ class Forgetpassword extends Model
                         echo $email;
                         $query = "UPDATE users SET otp = '$otp' WHERE email = '$email'";
                         mysqli_query($conn, $query);
-                        header("Location: otp.php");
+                        header("Location: otp");
                     }
                     echo 'Message has been sent';
                 } catch (Exception $e) {

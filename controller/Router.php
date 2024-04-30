@@ -27,7 +27,7 @@ class Routere
         }
         //  echo $path;
         //  echo "id = " .$id;
-        //session_start();
+        session_start();
 
 
 
@@ -67,6 +67,14 @@ class Routere
         }
         elseif ($path === '/tourism/views/profilesettings') {
             require '../views/profilesettings.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/hotels') {
+            require '../views/hotels.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/admindashboard') {
+            require '../views/admindashboard.php';
             exit();
         }
         elseif ($path === '/tourism/views/Adminphotos?id=' . $id) {

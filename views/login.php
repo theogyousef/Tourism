@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
     <div class="breadcrumb-container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="index">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Login</li>
             </ol>
         </nav>
@@ -80,7 +80,7 @@ if (isset($_POST["submit"])) {
                     <div class="mb-3 custom-form-input">
                         <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
                         <input type="password" name="pass"  class="form-control" id="passwordInput" placeholder="Enter *">
-                        <a href="../views/forgetpassword.php" class="password-reset-link">Forgotten your password?</a>
+                        <a href="forgetpassword" class="password-reset-link">Forgotten your password?</a>
                     </div>
                     <div class="d-grid">
                         <button type="submit" name="login" class="login" id="submit-button" class="btn btn-lg start-50 rounded-pill">Sign in</button>
