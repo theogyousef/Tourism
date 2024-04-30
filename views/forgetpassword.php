@@ -5,7 +5,12 @@
 </script>
 
 <?php
-require_once("../includes/Dbh.php");
+require "../controller/forgetpassword.php";
+$usercontroller = new Forgetpassword();
+
+if (isset($_POST["submit"])) {
+  $usercontroller->forgetpassword();
+}
 
 ?>
 
@@ -50,20 +55,20 @@ require_once("../includes/Dbh.php");
                 <p class="text-center mb-4 " style="font-weight: normal;">Please enter your email address. <br>
                     We will send you an OTP code to reset your password.</p>
 
-                <!-- Login Form -->
-                <form>
+                <!-- forget password Form -->
+                <form method ="post">
                     <div class="mb-3 custom-form-input">
                         <label for="emailInput" class="form-label">EMAIL<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="emailInput" placeholder="Enter *">
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter *">
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="login" id="login" class="btn btn-lg start-50 rounded-pill">Send</button>
+                        <button type="submit" name="submit" class="login" id="login" class="btn btn-lg start-50 rounded-pill">Send</button>
                     </div>
                 </form>
 
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
-                    <p class="mt-3"><a href="../views/signin.php" class="signup-link">Back to login</a></p>
+                    <p class="mt-3"><a href="../views/login.php" class="signup-link">Back to login</a></p>
                 </div>
 
             </div>
