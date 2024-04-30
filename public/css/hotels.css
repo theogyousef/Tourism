@@ -1,0 +1,204 @@
+h1 {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 30px !important;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    color: #134074;
+}
+
+.price {
+    margin-top: 20px;
+}
+
+.description {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#row {
+    margin: 20px;
+}
+
+#input-group {
+    width: 100px;
+}
+
+.filter-dropdown {
+    background-color: #EEF4ED;
+    border: 1px solid #8DA9C4;
+    border-radius: 0.25rem;
+}
+
+.filter-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+}
+
+.form-select {
+    border: none;
+    font-size: 1.25rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+}
+
+.form-select:focus {
+    border-color: inherit;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-dropdown {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: -23px;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: #0B2545;
+    padding: 5px 0;
+}
+
+.Icon>a {
+    color: white;
+    font-size: 20px;
+}
+
+.product-image:hover .links {
+    opacity: 1;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.Icon:hover .tooltiptext {
+    visibility: visible;
+}
+
+.list-view .row>[class*='col-'] {
+    max-width: 400px;
+    flex: 0 0 100%;
+}
+
+.list-view .row {
+    flex-direction: column;
+}
+
+@media (min-width: 576px) {
+    .list-view .card {
+        flex-direction: row;
+    }
+
+    /* The Grid View */
+    .products {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 450px;
+        box-sizing: border-box;
+    }
+
+    /* The List View */
+    .list-view .products {
+        flex-direction: row;
+        align-items: center;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 900px;
+        height: 300px;
+    }
+
+    .list-view .product-image {
+        flex: 0 0 auto;
+        width: 30%;
+        margin-right: 2%;
+    }
+
+    .list-view .Content {
+        flex: 1;
+        padding-left: 2%;
+    }
+
+    @media (max-width: 768px) {
+        .products {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+#reset {
+    position: relative;
+    left: 10px;
+}
+
+.btn-primary {
+    border-color: white;
+}
+
+.page-link {
+    color: black !important;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
