@@ -3,9 +3,14 @@
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
-
 <?php
-require_once("../includes/Dbh.php");
+
+require "../controller/forgetpassword.php";
+$usercontroller = new Forgetpassword();
+
+if (isset($_POST["submitpass"])) {
+  $usercontroller->newpassword();
+}
 
 ?>
 
@@ -49,16 +54,16 @@ require_once("../includes/Dbh.php");
                 <p class="text-center mb-4" style="font-weight: normal;">Please enter your new password.</p>
 
 
-                <!-- Login Form -->
-                <form>
+                <!-- reset password Form -->
+                <form method="post">
                     <div class="mb-3 custom-form-input">
                         <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="passwordInput" placeholder="Enter *">
+                        <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter *">
                     </div>
 
                     <div class="mb-3 custom-form-input">
                         <label for="confirmpasswordInput" class="form-label">CONFIRM PASSWORD <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="confirmpasswordInput" placeholder="Confirm Password *">
+                        <input type="password" name="confirmpassword"  class="form-control" id="confirmpasswordInput" placeholder="Confirm Password *">
                     </div>
 
                     <div class="d-grid">
