@@ -246,7 +246,7 @@ include "header.php" ;
     </section>
     <!-- Trips -->
 
-    <div class="viewproduct">
+    <div class="viewproduct" style="margin-top: 350px;">
         <div class="row">
             <div class="col-md text-center">
                 <h6 class="text-center mb-4" style="font-weight: normal;">EVENTS</h6>
@@ -738,6 +738,8 @@ include "header.php" ;
             </div>
         </div>
     </div>
+    <?php include "footer.php"?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

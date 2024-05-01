@@ -1,3 +1,31 @@
+<?php
+require_once '../controller/usercontroller.php';
+$usercontroller = new usercontroller();
+
+$conn = $usercontroller->getConn();
+if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+    $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION["login"] = true;
+    $_SESSION["id"] = $row["id"];
+} else if (!empty($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $row = mysqli_fetch_assoc($result);
+} else {
+    header("Location: login");
+}
+
+// if (!empty($_SESSION['products']) && $row['guest'] == 1) {
+//   header("Location: login");
+// }
+
+if ($row["deactivated"] == 1) {
+    header("Location: deactivated");
+}
+
+include "header.php" ;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +33,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Collection</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/hotels.css">
@@ -100,16 +128,16 @@
 
 
 
-    <script src="../public/JS/collections.js"></script>
+    <!-- <script src="../public/JS/collections.js"></script> -->
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $('.filter-select').change(function() {
                 var formId = $(this).data('form-id');
                 $('#' + formId).submit();
             });
         });
-    </script>
+    </script> -->
 </body>
 <footer>
     <?php include "footer.php"; ?>
