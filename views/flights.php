@@ -17,37 +17,62 @@ $flights = $result->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flights</title>
     <link rel="stylesheet" href="../public/flights.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+                
+
 </head>
 
 <body>
 <header>
-        <h1>Flights</h1>
+<?php include "header.php"; ?>
         <style>
             <?php include "../public/css/flights.css"; ?>
         </style>
     </header>
 
-   
-    <div class="flight-wrap">
-        <?php foreach ($flights as $flight) : ?>
-            <div class="flight-container">
-               
-                <div class="flight-details">
-                    
-                    <p class="flight-duration">Duration: <?php echo $flight['flight_dur']; ?> hours</p>
-                    <p class="flight-stops">Stops: <?php echo $flight['flight_day']; ?></p>
-                    <p class="flight-day">Day: <?php echo $flight['flight_day']; ?></p>
-                    <p class="flight-departure">Departure: <?php echo $flight['flight_dep']; ?></p>
-                    <p class="flight-arrival">Arrival: <?php echo $flight['flight_arr']; ?></p>
-                    <p class="departure-time">Departure Time: <?php echo $flight['dept_time']; ?></p>
-                    <p class="arrival-time">Arrival Time: <?php echo $flight['arr_time']; ?></p>
-                    <p class="flight-price">Price: <?php echo $flight['flight_price']; ?></p>
-                    <a href="?add=<" class="add-to-cart-button">Book Now</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
+    <div class="flight-view">
+    <?php foreach ($flights as $flight) : 
+        $deptTimeInteger = strtotime($flight['dept_time']);
+        $arrTimeInteger = strtotime($flight['arr_time']);
+        $timeDiff = $arrTimeInteger - $deptTimeInteger;
+        if ($timeDiff >= 0){
+        $hours = floor($timeDiff / 3600);
+        $min = floor(($timeDiff % 3600) / 60);
+        $min = str_pad($min, 2, '0', STR_PAD_LEFT);
+        }
+        else{
+        $hours = floor($timeDiff / 3600) + 24;
+        $min = floor(($timeDiff % 3600) / 60);
+        $min = str_pad($min, 2, '0', STR_PAD_LEFT);
+        }
+        ?>
+      <div class="flight-container">
+        <div class="flight-details">
+          <div class="flight-time">
+            <p class="departure-time"> <?php echo date('h:i A', $deptTimeInteger); ?></p>
+            <p class="flight-dep"><?php echo $flight['flight_dep']; ?></p>
+          </div>
+          
+          <div class="flight-separator"> 
+            <p class="flight-duration"> <?php echo $hours . "h" . " " . $min . "m" ?> </p>
+          </div>
+         
+          <div class="flight-time">
+            <p class="arrival-time"> <?php echo date('h:i A',$arrTimeInteger); ?></p>
+            <p class="flight-arr"><?php echo $flight['flight_arr']; ?></p>
+          </div>
+        </div>
+        <a href ="#" class="flight-details-link"><span>Flight Details</span></a> 
+        <div class="flight-price-container">
+          <p class="eco-price"> <?php echo number_format($flight['eco_price'],0,'',',') . "  " .  "EGP"; ?></p>
+          
+        </div>
+        <div class="flight-price-container">
+        <p class="bus-price"> <?php echo  number_format($flight['bus_price'],0,'',',') . "  " . "EGP"; ?></p> 
     </div>
-
+      </div>
+    <?php endforeach; ?>
+  </div>
     <footer>
         <?php include "footer.php"; ?>
     </footer>
