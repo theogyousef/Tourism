@@ -1,8 +1,7 @@
 <script>
-  if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-  }
-
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
 
 <?php
@@ -72,14 +71,16 @@ if (isset($_POST["submit"])) {
                 </div>
 
                 <!-- Login Form -->
-                <form method="post" name="loginForm" id="loginForm">
+                <form method="post" name="loginForm" id="loginForm" onsubmit="return validateLoginForm()">
                     <div class="mb-3 custom-form-input">
                         <label for="emailInput" class="form-label">EMAIL <span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter *" >
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email">
+                        <div class="error" id="emailError"></div>
                     </div>
                     <div class="mb-3 custom-form-input">
                         <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
-                        <input type="password" name="pass"  class="form-control" id="passwordInput" placeholder="Enter *">
+                        <input type="password" name="pass" class="form-control" id="passwordInput" placeholder="Enter password">
+                        <div class="error" id="passwordError"></div>
                         <a href="forgetpassword" class="password-reset-link">Forgotten your password?</a>
                     </div>
                     <div class="d-grid">
@@ -105,6 +106,10 @@ if (isset($_POST["submit"])) {
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        <?php include "../public/js/login.js" ?>
+    </script>
 </body>
 
 </html>
