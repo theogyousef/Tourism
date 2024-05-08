@@ -1,8 +1,7 @@
 <script>
-  if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-  }
-
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
 
 <?php
@@ -70,36 +69,41 @@ if (isset($_POST["submit"])) {
                 </div>
 
                 <!-- Sign up Form -->
-                <form method="post" name="signupform" id="myform">
+                <form method="post" name="signupform" id="myform" onsubmit="return validateSignupForm()">
                     <div class="mb-3 custom-form-input">
                         <label for="emailInput" class="form-label">EMAIL <span class="text-danger">*</span></label>
-                        <input type="email" name="email"  class="form-control" id="emailInput" placeholder="Enter *">
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter *">
+                        <div class="error" id="emailError"></div>
                     </div>
 
                     <div class="row">
                         <div class="col mb-3 custom-form-input">
-                            <label for="firstNameInput" class="form-label">NAME <span class="text-danger">*</span></label>
-                            <input type="text" name="fname" class="form-control" id="firstNameInput" placeholder="Name *" style="width: 225px;">
+                            <label for="firstNameInput" class="form-label">FIRST NAME<span class="text-danger">*</span></label>
+                            <input type="text" name="fname" class="form-control" id="firstNameInput" placeholder="Name *">
+                            <div class="error" id="firstNameError"></div>
                         </div>
 
-                        <div class="col mb-3 custom-form-input" style="margin-right: 55px;">
+                        <div class="col mb-3 custom-form-input">
                             <label for="lastNameInput" class="form-label" style="margin-left: -100px;">LAST NAME <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control"name="lname"  id="lastNameInput" placeholder="Last name *" style="width: 225px; margin-left:-100px;">
+                            <input type="text" class="form-control" name="lname" id="lastNameInput" placeholder="Last name *" style="width: 225px; margin-left:-100px;">
+                            <div class="error" id="lastNameError"></div>
                         </div>
                     </div>
 
                     <div class="mb-3 custom-form-input">
                         <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
                         <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Password *">
+                        <div class="error" id="passwordError"></div>
                     </div>
 
                     <div class="mb-3 custom-form-input">
                         <label for="confirmpasswordInput" class="form-label">CONFIRM PASSWORD <span class="text-danger">*</span></label>
                         <input type="password" name="confirmpassword" class="form-control" id="confirmpasswordInput" placeholder="Confirm Password *">
+                        <div class="error" id="confirmPasswordError"></div>
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit"name="submit" class="login" id="submit-button" class="btn btn-lg start-50 rounded-pill">Sign up</button>
+                        <button type="submit" name="submit" class="login" id="submit-button" class="btn btn-lg start-50 rounded-pill">Sign up</button>
                     </div>
                 </form>
 
@@ -120,6 +124,9 @@ if (isset($_POST["submit"])) {
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        <?php include "../public/js/signup.js" ?>
+    </script>
 </body>
 
 </html>
