@@ -717,10 +717,11 @@ body {
 }
 
 .dropdown-menu-large {
-    min-width: 1300px !important;
-    padding: 20px;
+    min-width: 1200px !important;
+    padding: 10px;
+    z-index: 1000 !important;
+    left: 0 !important; 
 }
-
 .column-dropdown {
     column-count: 3;
 }
@@ -732,6 +733,8 @@ body {
     line-height: 28px !important;
     letter-spacing: 0 !important;
     font-family: "Montserrat", sans-serif !important;
+    margin-left: 10px !important;
+    
 
 }
 

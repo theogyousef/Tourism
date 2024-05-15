@@ -53,23 +53,26 @@ if (isset($_POST["submitpass"])) {
                 <h2 class="text-center mb-4">NEW PASSWORD</h2>
                 <p class="text-center mb-4" style="font-weight: normal;">Please enter your new password.</p>
 
-
                 <!-- reset password Form -->
-                <form method="post">
-                    <div class="mb-3 custom-form-input">
-                        <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
-                        <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter *">
-                    </div>
 
-                    <div class="mb-3 custom-form-input">
-                        <label for="confirmpasswordInput" class="form-label">CONFIRM PASSWORD <span class="text-danger">*</span></label>
-                        <input type="password" name="confirmpassword"  class="form-control" id="confirmpasswordInput" placeholder="Confirm Password *">
-                    </div>
 
-                    <div class="d-grid">
-                        <button type="submit" name="submitpass" id="submitnewpassword" class="login" class="btn btn-lg start-50 rounded-pill">Submit</button>
-                    </div>
-                </form>
+    <form method="post" name="passwordResetForm" id="passwordResetForm" onsubmit="return validatePasswordResetForm()">
+        <div class="mb-3 custom-form-input">
+            <label for="passwordInput" class="form-label">PASSWORD <span class="text-danger">*</span></label>
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter Password">
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="mb-3 custom-form-input">
+            <label for="confirmpasswordInput" class="form-label">CONFIRM PASSWORD <span class="text-danger">*</span></label>
+            <input type="password" name="confirmpassword" class="form-control" id="confirmpasswordInput" placeholder="Confirm Password">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" name="submitpass" id="submitnewpassword" class="login"class="btn btn-lg btn-primary start-50 rounded-pill">Submit</button>
+        </div>
+    </form>
 
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
@@ -83,4 +86,7 @@ if (isset($_POST["submitpass"])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
 </body>
 
+<script>
+        <?php include "../public/js/resetpassword.js" ?>
+    </script>
 </html>
