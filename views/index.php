@@ -248,7 +248,7 @@ include "header.php" ;
 
     <div class="viewproduct" style="margin-top: 350px;">
         <div class="row">
-            <div class="col-md text-center">
+            <div class="col-md text-center" style="margin-top: 100px;">
                 <h6 class="text-center mb-4" style="font-weight: normal;">EVENTS</h6>
                 <h1>Top Cities to Visit in Egypt</h1>
             </div>

@@ -717,7 +717,7 @@ body {
 }
 
 .dropdown-menu-large {
-    min-width: 1300px;
+    min-width: 1300px !important;
     padding: 20px;
 }
 
@@ -726,12 +726,12 @@ body {
 }
 
 .dropdown-header {
-    color: #13315C;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 28px;
-    letter-spacing: 0;
-    font-family: "Montserrat", sans-serif;
+    color: #13315C !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 28px !important;
+    letter-spacing: 0 !important;
+    font-family: "Montserrat", sans-serif !important;
 
 }
 
