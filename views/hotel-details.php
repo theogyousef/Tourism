@@ -24,6 +24,22 @@ if ($row["deactivated"] == 1) {
     header("Location: deactivated");
 }
 
+if (isset($_GET['id'])) {
+    $productId = $_GET['id'];
+
+    $sql = "SELECT * FROM hotels WHERE id = $productId";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $hoteldetials = mysqli_fetch_assoc($result);
+
+
+    } else {
+        echo '<p>No product details found.</p>';
+    }
+} else {
+    echo '<p>Product ID is not provided.</p>';
+}
 include "header.php";
 ?>
 <!DOCTYPE html>
@@ -65,17 +81,17 @@ include "header.php";
                 <div class="col-lg-8">
                     <div class="room-details-item">
                         <!-- Main Image -->
-                        <img src="../public/photos/room-1.jpg" alt="" class="main-image">
+                        <img src="<?php echo $hoteldetials['photo']?>" alt="" class="main-image" style="width: 60%; margin-left: 150px;">
                         <!-- Thumbnails -->
-                        <div class="thumbnail-container">
+                        <!-- <div class="thumbnail-container">
                             <img src="../public/photos/room-2.jpg" alt="" class="thumbnail">
                             <img src="../public/photos/room-3.jpg" alt="" class="thumbnail">
                             <img src="../public/photos/room-4.jpg" alt="" class="thumbnail">
                             <img src="../public/photos/room-5.jpg" alt="" class="thumbnail">
-                        </div>
+                        </div> -->
                         <div class="rd-text">
                             <div class="rd-title">
-                                <h3>Premium King Room</h3>
+                                <h3><?php echo $hoteldetials['name'] . ' room'?></h3>
                                 <div class="rdt-right">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
@@ -85,10 +101,10 @@ include "header.php";
                                         <i class="fas fa-star"></i>
 
                                     </div>
-                                    <a href="#">Booking Now</a>
+                                    <a href="#">Book Now</a>
                                 </div>
                             </div>
-                            <h2>159$<span>/Pernight</span></h2>
+                            <h2><?php echo  number_format($hoteldetials['price'] , 2) . ' LE' ?><span>/Pernight</span></h2>
                             <table>
                                 <tbody>
                                     <tr>

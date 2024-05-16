@@ -16,7 +16,7 @@ class Routere
             $pattern = '/\/tourism\/views\/(cart_display(?:\?remove=)?)(\d*)/';
         } else {
 
-            $pattern = '/\/tourism\/views\/(deleteflight|edithotels|deletehotel|edituser|deleteuser|makeuser|makeadmin|editorder|editreview|vieworder|Adminphotos|cancelorder|changepictures)\?id=(\d+)/';
+            $pattern = '/\/tourism\/views\/(deleteflight|edithotels|deletehotel|edituser|deleteuser|makeuser|makeadmin|hotel-details)\?id=(\d+)/';
         }
         if (preg_match($pattern, $path, $matches)) {
             // Extract the 'id' value from the matched URL
@@ -46,10 +46,7 @@ class Routere
             require '../views/login.php';
             exit();
         }
-        elseif ($path === '/tourism/views/room-details') {
-            require '../views/room-details.php';
-            exit();
-        }
+       
         elseif ($path === '/tourism/views/signup') {
             require '../views/signup.php';
             exit();
@@ -106,6 +103,10 @@ class Routere
         }
         elseif ($path === '/tourism/views/Adminphotos?id=' . $id) {
             require '../views/Adminphotos.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/hotel-details?id=' . $id) {
+            require '../views/hotel-details.php';
             exit();
         } elseif ($path === '/tourism/views/cart_display?remove=' . $id) {
             require '../views/cart_display.php';
