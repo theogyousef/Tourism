@@ -9,7 +9,7 @@ require "../controller/forgetpassword.php";
 $usercontroller = new Forgetpassword();
 
 if (isset($_POST["submit"])) {
-  $usercontroller->forgetpassword();
+    $usercontroller->forgetpassword();
 }
 
 ?>
@@ -56,16 +56,16 @@ if (isset($_POST["submit"])) {
                     We will send you an OTP code to reset your password.</p>
 
                 <!-- forget password Form -->
-                <form method ="post">
+                <form method="post" onsubmit="return validateEmailForm()">
                     <div class="mb-3 custom-form-input">
                         <label for="emailInput" class="form-label">EMAIL<span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter *">
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email">
+                        <div class="error" id="emailError"></div>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" name="submit" class="login" id="login" class="btn btn-lg start-50 rounded-pill">Send</button>
+                        <button type="submit" name="submit" class="login" id="login" class="btn btn-lg btn-primary start-50 rounded-pill">Send</button>
                     </div>
                 </form>
-
                 <div class="text-center mt-4">
                     <hr class="my-0" style="width: 80%; margin:auto;  margin-right: 40px;" />
                     <p class="mt-3"><a href="../views/login.php" class="signup-link">Back to login</a></p>
@@ -77,5 +77,8 @@ if (isset($_POST["submit"])) {
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+    <?php include "../public/js/forgetpassword.js" ?>
+</script>
 
 </html>

@@ -1,3 +1,9 @@
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+
 <?php
 require_once '../controller/usercontroller.php';
 $usercontroller = new usercontroller();
@@ -248,7 +254,7 @@ include "header.php" ;
 
     <div class="viewproduct" style="margin-top: 350px;">
         <div class="row">
-            <div class="col-md text-center">
+            <div class="col-md text-center" style="margin-top: 100px;">
                 <h6 class="text-center mb-4" style="font-weight: normal;">EVENTS</h6>
                 <h1>Top Cities to Visit in Egypt</h1>
             </div>
@@ -722,16 +728,19 @@ include "header.php" ;
                                 </h5>
                             </div>
                             <!-- newsettler Form -->
-                            <form action="" id="ContactFooter" class="footer-form">
+                            <form id="ContactFooter" class="footer-form">
                                 <div class="d-flex">
-                                    <div class="form-floating me-2 custom-email-input">
-                                        <input type="email" class="form-control border-0 custom-email-field" id="email"
-                                            placeholder=" " style="background: transparent; color: #000;">
+                                    <div class="form-floating me-2">
+                                        <input type="email" name="email" class="form-control border-0" id="email"
+                                            placeholder=" " style="background:#F0F0F0		; color: #000;">
                                         <label for="email">Enter your email address</label>
                                     </div>
-                                    <button type="button" class="btn-About-us btn-dark rounded-pill">Confirm</button>
+                                    <button type="button" id="submitMailButton" class="btn-About-us btn-dark">Sign
+                                        Up</button>
                                 </div>
+                                <div id="message"></div>
                             </form>
+                          
                         </div>
                     </div>
                 </div>
@@ -749,6 +758,7 @@ include "header.php" ;
 
 <script>
     <?php include "../public/js/index.js" ?>
+    <?php include "../public/js/ajaxHandlers.js" ?>
 </script>
 
 </html>
