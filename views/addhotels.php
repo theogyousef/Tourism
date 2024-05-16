@@ -99,6 +99,8 @@ include "adminnav.php";
                                 <option value="Matruh">Matruh (Matruh)</option>
                                 <option value="North Sinai">North Sinai (Shamal Sina)</option>
                                 <option value="South Sinai">South Sinai (Janub Sina)</option>
+                                <option value="Sharm El Sheikh">Sharm El Sheikh </option>
+
                             </select>
 
 

@@ -5,9 +5,11 @@
 </script>
 
 <?php
+require_once '../model/fetchModle.php';
+
 require_once '../controller/usercontroller.php';
 $usercontroller = new usercontroller();
-
+$fetchModle = new fetchModle();
 $conn = $usercontroller->getConn();
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
     $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
@@ -256,191 +258,63 @@ include "header.php" ;
         <div class="row">
             <div class="col-md text-center" style="margin-top: 100px;">
                 <h6 class="text-center mb-4" style="font-weight: normal;">EVENTS</h6>
-                <h1>Top Cities to Visit in Egypt</h1>
+                <h1>Top Hotels to Visit in Egypt</h1>
             </div>
         </div>
 
         <div class="container products-carousel">
-            <div class="row">
-                <div class="slider">
-                    <div class="col-md-3 ">
-                        <div class="products">
-                            <div class="product-image">
-                                <a href="product.php" class="images">
-                                    <img src="../public/photos/nuweiba.jpg" alt="Concept 2 PM5 BikeErg" class="pic-1"
-                                        width="500px">
+    <div class="row">
+        <div class="slider">
+        <?php
 
-                                    <img src="../public/photos/nweiba.jpg" alt="Concept 2 PM5 BikeErg" class="pic-2"
-                                        width="500px">
-                                </a>
-                                <div class="links">
-                                    <div class="Icon">
-                                        <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                        <span class="tooltiptext">Add to cart</span>
-                                    </div>
-                                    <div class="Icon">
-                                        <a href=""><i class="bi bi-heart"></i></i></a>
-                                        <span class="tooltiptext">Move to wishlist</span>
-                                    </div>
+        $result = $fetchModle->allhotels();
+
+
+            if (mysqli_num_rows($result) > 0) {
+             $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                            }
+            ?>
+
+            <?php if (!empty($hotels)): ?>           
+            <?php foreach ($hotels as $hotel): ?>
+                <div class="col-md-3">
+                    <div class="products">
+                        <div class="product-image">
+                            <a href="product.php" class="images">
+                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>" class="pic-1" width="500px">
+                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>" class="pic-2" width="500px">
+                            </a>
+                            <div class="links">
+                                <div class="Icon">
+                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
+                                    <span class="tooltiptext">Add to cart</span>
                                 </div>
-                            </div>
-                            <div class="Content">
-                                <h3>nuweiba</h3>
-                                <p class="detailsinfo">
-                                    <span class="typetrip">ASWAN</span> <span class="separate"></span> <span
-                                        class="nofdays">EGYPT</span>
-                                </p>
-                                <div class="cost">
-                                    <p class="lower-price">
-                                        From <span class="price">72.000 EGP</span>
-                                    </p>
+                                <div class="Icon">
+                                    <a href="#"><i class="bi bi-heart"></i></i></a>
+                                    <span class="tooltiptext">Move to wishlist</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="products">
-                            <div class="product-image">
-                                <a href="" class="images">
-                                    <img src="../public/photos/dahab.jpg" alt="Flat-Bench" class="pic-1" width="500px">
-
-                                    <img src="../public/photos/gouna2.jpg" alt="Flat-Bench" class="pic-2" width="500px">
-                                </a>
-                                <div class="links">
-                                    <div class="Icon">
-                                        <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                        <span class="tooltiptext">Add to cart</span>
-                                    </div>
-                                    <div class="Icon">
-                                        <a href=""><i class="bi bi-heart"></i></i></a>
-                                        <span class="tooltiptext">Move to wishlist</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content">
-                                <h3>GOUNA</h3>
-                                <p class="detailsinfo">
-                                    <span class="typetrip">GOUNA</span>
-                                    <span class="separate"></span> <span class="nofdays">EGYPT</span>
+                        <div class="Content">
+                            <h3><?php echo $hotel['name']; ?></h3>
+                            <p class="detailsinfo">
+                                <span class="typetrip"><?php echo $hotel['location']; ?></span> <span class="separate"></span> <span class="nofdays">Egypt</span>
+                            </p>
+                            <div class="cost">
+                                <p class="lower-price">
+                                    From <span class="price"><?php echo $hotel['price']; ?></span>
                                 </p>
-                                <div class="cost">
-                                    <p class="lower-price">
-                                        From <span class="price">5.850 EGP</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="products">
-                            <div class="product-image">
-                                <a href="" class="images">
-                                    <img src="../public/photos/siwa.jpg" alt="Concept 2 SkiErg" class="pic-1"
-                                        width="500px">
-
-                                    <img src="../public/photos/Siwa-Oasis-Egypt-1.webp" alt="Concept 2 SkiErg"
-                                        class="pic-2" width="500px">
-                                </a>
-                                <div class="links">
-                                    <div class="Icon">
-                                        <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                        <span class="tooltiptext">Add to cart</span>
-                                    </div>
-                                    <div class="Icon">
-                                        <a href=""><i class="bi bi-heart"></i></i></a>
-                                        <span class="tooltiptext">Move to wishlist</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content">
-                                <h3>SIWA</h3>
-                                <p class="detailsinfo">
-                                    <span class="typetrip">SIWA</span> <span class="separate"></span> <span
-                                        class="nofdays">EGYPT</span>
-                                </p>
-                                <div class="cost">
-                                    <p class="lower-price">
-                                        From <span class="price">58.000 EGP</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="products">
-                            <div class="product-image">
-                                <a href="" class="images">
-                                    <img src="../public/photos/aswan1.jpg" alt="ASSAULT AIRBIKE" class="pic-1"
-                                        width="500px">
-
-                                    <img src="../public/photos/aswan2.jpg" alt="ASSAULT AIRBIKE" class="pic-2"
-                                        width="500px">
-                                </a>
-                                <div class="links">
-                                    <div class="Icon">
-                                        <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                        <span class="tooltiptext">Add to cart</span>
-                                    </div>
-                                    <div class="Icon">
-                                        <a href=""><i class="bi bi-heart"></i></i></a>
-                                        <span class="tooltiptext">Move to wishlist</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content">
-                                <h3>ASWAN</h3>
-                                <p class="detailsinfo">
-                                    <span class="typetrip">EGYPT</span> <span class="separate"></span> <span
-                                        class="nofdays">ASWAN</span>
-                                </p>
-                                <div class="cost">
-                                    <p class="lower-price">
-                                        From <span class="price">39.000 EGP</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="products">
-                            <div class="product-image">
-                                <a href="" class="images">
-                                    <img src="../public/photos/alex.jpg" alt="Concept 2 SkiErg" class="pic-1"
-                                        width="500px">
-
-                                    <img src="../public/photos/dahab.jpg" alt="Concept 2 SkiErg" class="pic-2"
-                                        width="500px">
-                                </a>
-                                <div class="links">
-                                    <div class="Icon">
-                                        <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                        <span class="tooltiptext">Add to cart</span>
-                                    </div>
-                                    <div class="Icon">
-                                        <a href=""><i class="bi bi-heart"></i></i></a>
-                                        <span class="tooltiptext">Move to wishlist</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content">
-                                <h3>DAHAB</h3>
-                                <p class="detailsinfo">
-                                    <span class="typetrip">EGYPT</span> <span class="separate"></span> <span
-                                        class="nofdays">DAHAB</span>
-                                </p>
-                                <div class="cost">
-                                    <p class="lower-price">
-                                        From <span class="price">58.000 EGP</span>
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
+            <?php endforeach; ?>
+            <?php else: ?>
+            <p>No products found.</p>
+          <?php endif; ?>
         </div>
+    </div>
+</div>
     </div>
     <!-- map -->
     <div>

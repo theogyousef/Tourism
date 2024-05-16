@@ -110,17 +110,7 @@ $githubURL = "https://github.com/" . rawurlencode($githubUsername);
                         </div>
                         <hr class="my-4">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <?php
-                                $id = $row['id'];
-                                $query = "SELECT * from orders where user_id = '$id'";
-                                $result = mysqli_query($conn, $query);
-                                $row_count = mysqli_num_rows($result);
-                                echo '<h6 class="mb-0">Orders</h6> ' . $row_count ;
-                                ?>
-
-
-                            </li>
+                        
 
                         </ul>
                     </div>
