@@ -76,7 +76,7 @@ include "adminnav.php";
                             }
                             echo $counteruser ?>
                         </div>
-                        <div class="card-name">Total users :</div>
+                        <div class="card-name">Total users </div>
                     </div>
                     <div class="icon-box">
                         <i class="fas fa-users"></i>
@@ -88,7 +88,7 @@ include "adminnav.php";
                     <div class="card-content">
                         <div class="number">
                             <?php
-                            $sql = "SELECT * from products ";
+                            $sql = "SELECT * from trips ";
                             $resultproduct = mysqli_query($conn, $sql);
 
                             $counterproducts = 0;
@@ -97,19 +97,18 @@ include "adminnav.php";
                             }
                             echo $counterproducts ?>
                         </div>
-                        <div class="card-name">pieces of equipment</div>
+                        <div class="card-name">total trips</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-dumbbell"></i>
+                        <i class="fas fa-suitcase"></i>
                     </div>
                 </div>
-
 
                 <div class="card">
                     <div class="card-content">
                         <div class="number">
                             <?php
-                            $sql = "SELECT * from orders  ";
+                            $sql = "SELECT * from flights ";
                             $resultproduct = mysqli_query($conn, $sql);
 
                             $counterproducts = 0;
@@ -118,10 +117,30 @@ include "adminnav.php";
                             }
                             echo $counterproducts ?>
                         </div>
-                        <div class="card-name"> Orders</div>
+                        <div class="card-name">total flights</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-box-open"></i>
+                        <i class="fas fa-plane"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">
+                            <?php
+                            $sql = "SELECT * from hotels  ";
+                            $resultproduct = mysqli_query($conn, $sql);
+
+                            $counterproducts = 0;
+                            while ($row = mysqli_fetch_assoc($resultproduct)) {
+                                $counterproducts++;
+                            }
+                            echo $counterproducts ?>
+                        </div>
+                        <div class="card-name"> Hotels</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-hotel"></i>
                     </div>
                 </div>
 

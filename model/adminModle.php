@@ -3,23 +3,28 @@ require_once "../model/Model.php";
 
 class adminModel extends Model
 {
-    public function addproduct($name, $type, $stock, $price, $description, $fileUrl , $manufacture)
+    public function addhotel($name, $governorate, $price , $fileUrl )
     {       $conn = $this->getConn();
 
-        $query = "insert into products (name,type,stock,price,description,file,manufacture) values (' $name','$type', '$stock ' ,'$price','$description','$fileUrl' , '$manufacture')";
+        $query = "insert into hotels (name,location,price,photo) values (' $name','$governorate' ,'$price','$fileUrl')";
 
         mysqli_query($conn, $query);
     }
-    public function updateproduct($id, $name, $price, $type, $description, $stock, $manufacture)
+    public function updatehotel($id, $name, $price, $location)
     { $conn = $this->getConn();
-        $query = "update products set name ='$name',type ='$type',price ='$price',description ='$description', stock = '$stock' , manufacture = '$manufacture' where id = '$id'";
+        $query = "update hotels set name ='$name',price ='$price',location ='$location' where id = '$id'";
 
         mysqli_query($conn, $query);
     }
 
-    public function deleteproduct($id)
+    public function deletehotel($id)
     { $conn = $this->getConn();
-        $query = "DELETE FROM products WHERE id = '$id'";
+        $query = "DELETE FROM hotels WHERE id = '$id'";
+        mysqli_query($conn, $query);
+    }
+    public function deleteflight($id)
+    { $conn = $this->getConn();
+        $query = "DELETE FROM flights WHERE id = '$id'";
         mysqli_query($conn, $query);
     }
     public function adduser($firstname, $lastname, $email, $hashedPassword)

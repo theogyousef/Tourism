@@ -4,18 +4,17 @@ include "../model/adminModle.php";
 // products funvtions
 class AdminFunctions extends Model{
 
-public function addproduct()
+
+
+public function addhotel()
 {
     $adminModel = new adminModel();
     $name = $_POST["name"];
+    $governorate = $_POST["governorate"];
     $price = $_POST["price"];
-    $type = $_POST["type"];
-    $stock = $_POST["stock"];
-    $description = $_POST["description"];
     $file = $_FILES["file"];
-    $manufacture = $_POST["manufacture"];
 
-    $uploadDirectory = '../public/photos/productPhotos/'; // Directory where you save the uploaded files
+    $uploadDirectory = '../public/photos/hotelPhotos/'; // Directory where you save the uploaded files
 
     // Check if the file was uploaded successfully
     if (move_uploaded_file($file["tmp_name"], $uploadDirectory . $file["name"])) {
@@ -27,41 +26,49 @@ public function addproduct()
     }
 
     /// apply th query to db by pass to the handler func
-   $adminModel->addproduct($name, $type, $stock , $price, $description, $fileUrl , $manufacture);
+   $adminModel->addhotel($name, $governorate, $price , $fileUrl );
 
-    header("Location: products");
+    header("Location: adminhotels");
 
 
 }
-public function updateproduct()
+public function updatehotel()
 {    $adminModel = new adminModel();
 
 
     $id = $_POST["id"];
     $name = $_POST["name"];
     $price = $_POST["price"];
-    $type = $_POST["type"];
-    $description = $_POST["description"];
-    $stock = $_POST["stock"];
-   $manufacture = $_POST["manufacture"];
+    $location = $_POST["location"];
+  
    
     /// apply th query to db by pass to the handler func
-    $adminModel->updateproduct($id, $name, $price, $type, $description, $stock , $manufacture);
-    header("Location: products");
+    $adminModel->updatehotel($id, $name, $price, $location);
+    header("Location: adminhotels");
 
 
 }
-public function deleteproduct()
+public function deletehotel()
 {    $adminModel = new adminModel();
 
 
 
     $id = $_POST["id"];
-    $adminModel->deleteproduct($id);
-    header("Location: products");
+    $adminModel->deletehotel($id);
+    header("Location: adminhotels");
 
 }
 
+public function deleteflight()
+{    $adminModel = new adminModel();
+
+
+
+    $id = $_POST["id"];
+    $adminModel->deleteflight($id);
+    header("Location: adminflights");
+
+}
 // users public   functions 
 
 public   function adduser()

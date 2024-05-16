@@ -62,7 +62,7 @@ if ($row["guest"] == 1) {
 
         <div class="topbar">
             <div class="logo">
-                <h2>Pure Fitness</h2>
+                <h2>Tourism</h2>
             </div>
 
 
@@ -83,19 +83,19 @@ if ($row["guest"] == 1) {
         <div class="sidebar">
             <ul>
                 <li class="active" id="dashboard">
-                    <a href="adminDashboard">
+                    <a href="admindashboard">
                         <i class="fas fa-th-large"></i>
                         <div>Dashboard</div>
                     </a>
                 </li>
 
-                <li class="dropdown" id="photos">
+                <!-- <li class="dropdown" id="photos">
                     <a href="photoselector">
                         <i class="fas fa-images"></i>
                         <div>Photos manager</div>
                     </a>
 
-                </li>
+                </li> -->
 
                 <li class="dropdown" id="users">
                     <a href="users">
@@ -111,34 +111,50 @@ if ($row["guest"] == 1) {
                     </div>
                 </li>
                 <li class="dropdown" id="products">
-                    <a href="products">
-                        <i class="fas fa-dumbbell"></i>
-                        <div>products</div>
+                    <a href="admintrips">
+                        <i class="fas fa-suitcase"></i>
+                        <div>Trips</div>
                     </a>
                     <div class="dropdown-content">
-                        <a href="addproduct">Add product</a>
-                        <a href="addoption">Add Product Option</a>
+                        <a href="addtrip">Add Trip</a>
+                        <!-- <a href="addoption">Add Product Option</a>
                         <a href="addsale">Add Product Sale</a>
-                        <a href="addvaluetoOP"> Add Value Option</a>
+                        <a href="addvaluetoOP"> Add Value Option</a> -->
                     </div>
                 </li>
-
-                <li class="dropdown" id="orders">
-                    <a href="Adminorders">
-                        <i class="fas fa-box-open"></i>
-                        <div>orders</div>
+                <li class="dropdown" id="products">
+                    <a href="adminflights">
+                        <i class="fas fa-plane"></i>
+                        <div>flights</div>
                     </a>
-
+                    <div class="dropdown-content">
+                        <a href="addflight">Add flight</a>
+                        <!-- <a href="addoption">Add Product Option</a>
+                        <a href="addsale">Add Product Sale</a>
+                        <a href="addvaluetoOP"> Add Value Option</a> -->
+                    </div>
                 </li>
-                <li class="dropdown" id="orders">
+                <li class="dropdown" id="products">
+                    <a href="adminhotels">
+                        <i class="fas fa-hotel"></i>
+                        <div>Hotels</div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="addhotels">Add hotel</a>
+                        <!-- <a href="addoption">Add Product Option</a>
+                        <a href="addsale">Add Product Sale</a>
+                        <a href="addvaluetoOP"> Add Value Option</a> -->
+                    </div>
+                </li>
+                <!-- <li class="dropdown" id="orders">
                     <a href="Adminreviews">
                         <i class="fas fa-inbox"></i>
                         <div>reviews</div>
                     </a>
 
-                </li>
+                </li> -->
 
-                <li class="dropdown" id="products">
+                <!-- <li class="dropdown" id="products">
                     <a href="products">
                         <i class="fas fa-dumbbell"></i>
                         <div>Reports</div>
@@ -150,9 +166,8 @@ if ($row["guest"] == 1) {
                         <a href="msales">Monthly Sales</a>
                         <a href="qsales">Quarterly Sales</a>
                         <a href="ysales">Yearly Sales</a>
-                        <!-- Add more links as needed -->
                     </div>
-                </li>
+                </li> -->
 
 
                 <li>

@@ -16,7 +16,7 @@ class Routere
             $pattern = '/\/tourism\/views\/(cart_display(?:\?remove=)?)(\d*)/';
         } else {
 
-            $pattern = '/\/tourism\/views\/(product|editproduct|deleteproduct|edituser|deleteuser|makeuser|makeadmin|editorder|editreview|vieworder|Adminphotos|cancelorder|changepictures)\?id=(\d+)/';
+            $pattern = '/\/tourism\/views\/(deleteflight|edithotels|deletehotel|edituser|deleteuser|makeuser|makeadmin|editorder|editreview|vieworder|Adminphotos|cancelorder|changepictures)\?id=(\d+)/';
         }
         if (preg_match($pattern, $path, $matches)) {
             // Extract the 'id' value from the matched URL
@@ -77,8 +77,31 @@ class Routere
             require '../views/hotels.php';
             exit();
         }
+        elseif ($path === '/tourism/views/users') {
+            require '../views/users.php';
+            exit();
+        }
         elseif ($path === '/tourism/views/admindashboard') {
             require '../views/admindashboard.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/admintrips') {
+            require '../views/admintrips.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/adduser') {
+            require '../views/adduser.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/adminflights') {
+            require '../views/adminflights.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/adminhotels') {
+            require '../views/adminhotels.php';
+            exit();
+        }   elseif ($path === '/tourism/views/addhotels') {
+            require '../views/addhotels.php';
             exit();
         }
         elseif ($path === '/tourism/views/Adminphotos?id=' . $id) {
@@ -96,20 +119,23 @@ class Routere
         } elseif ($path === '/tourism/views/changepictures?id=' . $id) {
             require '../views/changepictures.php';
             exit();
-        }  elseif ($path === '/tourism/views/editorder?id=' . $id) {
-            require '../views/editorder.php';
+        }  elseif ($path === '/tourism/views/edithotels?id=' . $id) {
+            require '../views/edithotels.php';
             exit();
         }  elseif ($path === '/tourism/views/vieworder?id=' . $id) {
             require '../views/vieworder.php';
             exit();
-        } elseif ($path === '/tourism/views/editproduct?id=' . $id) {
-            require '../views/editproduct.php';
+        } elseif ($path === '/tourism/views/editflight?id=' . $id) {
+            require '../views/editflight.php';
             exit();
         } elseif ($path === '/tourism/views/product?id=' . $id) {
             require '../views/product.php';
             exit();
-        } elseif ($path === '/tourism/views/deleteproduct?id=' . $id) {
-            require '../views/deleteproduct.php';
+        } elseif ($path === '/tourism/views/deleteflight?id=' . $id) {
+            require '../views/deleteflight.php';
+            exit();
+        }elseif ($path === '/tourism/views/deletehotel?id=' . $id) {
+            require '../views/deletehotel.php';
             exit();
         } elseif ($path === '/tourism/views/edituser?id=' . $id) {
             require '../views/edituser.php';
