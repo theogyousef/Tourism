@@ -81,7 +81,8 @@ include "header.php";
                 <div class="col-lg-8">
                     <div class="room-details-item">
                         <!-- Main Image -->
-                        <img src="<?php echo $hoteldetials['photo']?>" alt="" class="main-image" style="width: 60%; margin-left: 150px;">
+                        <img src="<?php echo $hoteldetials['photo'] ?>" alt="" class="main-image"
+                            style="width: 60%; margin-left: 150px;">
                         <!-- Thumbnails -->
                         <!-- <div class="thumbnail-container">
                             <img src="../public/photos/room-2.jpg" alt="" class="thumbnail">
@@ -91,7 +92,7 @@ include "header.php";
                         </div> -->
                         <div class="rd-text">
                             <div class="rd-title">
-                                <h3><?php echo $hoteldetials['name'] . ' room'?></h3>
+                                <h3><?php echo $hoteldetials['name'] . ' room'; ?></h3>
                                 <div class="rdt-right">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
@@ -99,12 +100,15 @@ include "header.php";
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
-
                                     </div>
                                     <a href="#">Book Now</a>
                                 </div>
                             </div>
-                            <h2><?php echo  number_format($hoteldetials['price'] , 2) . ' LE' ?><span>/Pernight</span></h2>
+                            <h5><?php echo $hoteldetials['location'] ; ?></h5>
+
+
+                            <h2><?php echo number_format($hoteldetials['price'], 2) . ' LE' ?><span>/Pernight</span>
+                            </h2>
                             <table>
                                 <tbody>
                                     <tr>
@@ -142,7 +146,7 @@ include "header.php";
                     <div class="rd-reviews">
                         <h4>Reviews</h4>
                         <div class="review-item">
-                           
+
                             <div class="ri-text">
                                 <span>27 Aug 2019</span>
                                 <div class="rating">
@@ -161,7 +165,7 @@ include "header.php";
                             </div>
                         </div>
                         <div class="review-item">
-                           
+
                             <div class="ri-text">
                                 <span>27 Aug 2019</span>
                                 <div class="rating">
@@ -251,7 +255,7 @@ include "header.php";
             });
         });
     </script>
-<?php include "footer.php"?>
+    <?php include "footer.php" ?>
 
 </body>
 

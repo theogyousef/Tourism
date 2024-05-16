@@ -143,7 +143,7 @@
                         <a class="nav-link" href="#">Plan your trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Information</a>
+                        <a class="nav-link" href="hotels">Hotels</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

@@ -6,7 +6,6 @@
 
 <?php
 require_once '../model/fetchModle.php';
-
 require_once '../controller/usercontroller.php';
 $usercontroller = new usercontroller();
 $fetchModle = new fetchModle();
