@@ -1,5 +1,4 @@
 <?php
-//session_start(); //activate only when hosted 
 require_once("../includes/Dbh.php");
 abstract class Model
 {
