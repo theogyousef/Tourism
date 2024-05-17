@@ -32,8 +32,6 @@ if (isset($_GET['id'])) {
 
     if ($result && mysqli_num_rows($result) > 0) {
         $hoteldetials = mysqli_fetch_assoc($result);
-
-
     } else {
         echo '<p>No product details found.</p>';
     }
@@ -56,8 +54,7 @@ include "header.php";
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha384-fVtjjoQ5+wvjM0Pe7v+53C8F+v/Dz+w9gIrIo0rKEQ+djEaq9tl5IQVSS+R+zu7f" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-fVtjjoQ5+wvjM0Pe7v+53C8F+v/Dz+w9gIrIo0rKEQ+djEaq9tl5IQVSS+R+zu7f" crossorigin="anonymous">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" type="text/css">
@@ -81,8 +78,7 @@ include "header.php";
                 <div class="col-lg-8">
                     <div class="room-details-item">
                         <!-- Main Image -->
-                        <img src="<?php echo $hoteldetials['photo'] ?>" alt="" class="main-image"
-                            style="width: 60%; margin-left: 150px;">
+                        <img src="<?php echo $hoteldetials['photo'] ?>" alt="" class="main-image" style="width: 60%; margin-left: 150px;">
                         <!-- Thumbnails -->
                         <!-- <div class="thumbnail-container">
                             <img src="../public/photos/room-2.jpg" alt="" class="thumbnail">
@@ -101,10 +97,10 @@ include "header.php";
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <a href="#">Book Now</a>
+                                    <button class="btn btn-secondary add-to-cart" data-hotel-id="<?php echo $hoteldetials['ID']; ?>" data-hotel-name="<?php echo $hoteldetials['name']; ?>" data-hotel-price="<?php echo $hoteldetials['price']; ?>" data-hotel-image="<?php echo $hoteldetials['photo']; ?>">Add to Cart</button>
                                 </div>
                             </div>
-                            <h5><?php echo $hoteldetials['location'] ; ?></h5>
+                            <h5><?php echo $hoteldetials['location']; ?></h5>
 
 
                             <h2><?php echo number_format($hoteldetials['price'], 2) . ' LE' ?><span>/Pernight</span>
@@ -244,17 +240,51 @@ include "header.php";
         </div>
     </section>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const mainImage = document.querySelector(".main-image");
             const thumbnails = document.querySelectorAll(".thumbnail");
 
             thumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener("mouseover", function () {
+                thumbnail.addEventListener("mouseover", function() {
                     mainImage.src = thumbnail.src;
                 });
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    const hotelName = this.getAttribute('data-hotel-name');
+                    const hotelPrice = this.getAttribute('data-hotel-price');
+                    const hotelImage = this.getAttribute('data-hotel-image');
+
+                    fetch('add_to_wishlist.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: hotelId,
+                                name: hotelName,
+                                price: hotelPrice,
+                                image: hotelImage
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Hotel added to Cart!');
+                            } else {
+                                alert('Failed to add hotel to Cart.');
+                            }
+                        });
+                });
+            });
+        });
+    </script>
+
     <?php include "footer.php" ?>
 
 </body>
