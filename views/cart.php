@@ -1,9 +1,11 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // require '../controller/config.php';
-require '../includes/config.php';
-require '../includes/Dbh.php';
+require_once '../controller/usercontroller.php';
+$usercontroller = new usercontroller();
 
 // include "header.php";
 
@@ -16,9 +18,11 @@ if (isset($_GET['remove'])) {
         }
     }
     $_SESSION['products'] = array_values($_SESSION['products']);
-    header('Location: cart.php');
+    header('Location: cart');
     exit;
 }
+
+ include "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +59,7 @@ if (isset($_GET['remove'])) {
                         $total += $product['price'];
                         ?>
                         <div class="col-md-12 mb-3">
-                            <div class="card">
+                            <div class="card" style="width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-2">
                                         <?php if (isset($product['image'])) : ?>
@@ -70,7 +74,7 @@ if (isset($_GET['remove'])) {
                                                 <h5 class="card-title"><a href="product?id=<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a></h5>
                                             <?php endif; ?>
                                             <?php if (isset($product['price'])) : ?>
-                                                <p class="card-text"><?php echo $product['price']; ?> EGP</p>
+                                                <p class="card-text"><?php echo  number_format($product['price'],2); ?> EGP</p>
                                             <?php endif; ?>
                                             <?php if (isset($product['options'])) : ?>
                                                 <p class="card-text"><?php echo $product['options']; ?></p>
@@ -91,11 +95,11 @@ if (isset($_GET['remove'])) {
 
             <div class="row mt-4">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                    <h3>Total: <?php echo $total; ?> EGP</h3>
+                    <h3>Total: <?php echo  number_format($total,2); ?> EGP</h3>
                     <?php $_SESSION['total'] = $total; ?>
                     <div>
                         <?php if (empty($_SESSION['products'])) : ?>
-                            <a href="hotels.php" class="btn btn-primary">Discover More</a>
+                            <a href="hotels" class="btn btn-primary">Discover More</a>
                         <?php endif; ?>
                         <?php if (!empty($_SESSION['products'])) : ?>
                             <a href="confirmaddress" class="btn btn-success">Proceed to Checkout</a>

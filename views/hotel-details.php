@@ -275,9 +275,9 @@ include "header.php";
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert('Hotel added to Cart!');
+                                // alert('Hotel added to Cart!');
                             } else {
-                                alert('Failed to add hotel to Cart.');
+                                // alert('Failed to add hotel to Cart.');
                             }
                         });
                 });

@@ -154,7 +154,7 @@
                         <a class="nav-link" href="#"><i class="bi bi-heart"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php"><i class="bi bi-cart"></i></a>
+                        <a class="nav-link" href="cart"><i class="bi bi-cart"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#" id="navbarDropdownSignIn" role="button" data-bs-toggle="dropdown" aria-expanded="false">

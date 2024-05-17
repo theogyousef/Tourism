@@ -100,6 +100,9 @@ class Routere
         }   elseif ($path === '/tourism/views/addhotels') {
             require '../views/addhotels.php';
             exit();
+        }elseif ($path === '/tourism/views/cart') {
+            require '../views/cart.php';
+            exit();
         }
         elseif ($path === '/tourism/views/addflight') {
             require '../views/addflight.php';

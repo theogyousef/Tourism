@@ -631,9 +631,9 @@ include "header.php";
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            alert("Added to cart!");
+                            // alert("Added to cart!");
                         } else {
-                            alert("Failed to add to cart.");
+                            // alert("Failed to add to cart.");
                         }
                     })
                     .catch(error => console.error("Error:", error));
