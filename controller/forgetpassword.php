@@ -118,7 +118,7 @@ class Forgetpassword extends Model
                     $update_query = mysqli_query($conn, "UPDATE users SET password = '$hashedPassword' WHERE email = '$email'");
 
                     if ($update_query) {
-                        header("Location: login.php");
+                        header("Location: login");
                         unset($_SESSION['email']);
                     } else {
                         echo "Error updating password: " . mysqli_error($conn);
