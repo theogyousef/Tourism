@@ -5,25 +5,24 @@ $usercontroller = new usercontroller();
 $fetchModle = new fetchModle();
 
 $conn = $usercontroller->getConn();
+
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
-    $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
+    $result = mysqli_query($conn, "SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1'");
     $row = mysqli_fetch_assoc($result);
     $_SESSION["login"] = true;
     $_SESSION["id"] = $row["id"];
 } else if (!empty($_SESSION["id"])) {
     $id = $_SESSION["id"];
-    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id'");
     $row = mysqli_fetch_assoc($result);
 } else {
     header("Location: login");
+    exit;
 }
-
-// if (!empty($_SESSION['products']) && $row['guest'] == 1) {
-//   header("Location: login");
-// }
 
 if ($row["deactivated"] == 1) {
     header("Location: deactivated");
+    exit;
 }
 
 include "header.php";
@@ -110,13 +109,15 @@ include "header.php";
 
                 if (mysqli_num_rows($result) > 0) {
                     $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                } else {
+                    $hotels = [];
                 }
                 ?>
 
                 <?php if (!empty($hotels)) : ?>
                     <?php foreach ($hotels as $hotel) : ?>
                         <div class="col-md-3 mb-4">
-                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" style="text-decoration: none; color: inherit;">
+                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="hotel-link" style="text-decoration: none; color: inherit;">
                                 <div style="width: 300px;" class="card mb-4 product-card">
                                     <img src="<?php echo $hotel['photo']; ?>" class="card-img-top" alt="<?php echo $hotel['name']; ?>">
                                     <div class="card-body">
@@ -130,8 +131,8 @@ include "header.php";
                                             </li>
                                         </ul>
                                         <div class="product-actions mt-3">
-                                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="btn btn-primary">Book Now</a>
-                                            <button class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
+                                            <button type="button" class="btn btn-secondary add-to-cart" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Cart</button>
+                                            <button type="button" class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
                                         </div>
                                     </div>
                                 </div>
@@ -143,20 +144,20 @@ include "header.php";
                 <?php endif; ?>
             </div>
         </div>
-
-
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.add-to-wishlist').forEach(button => {
-                button.addEventListener('click', function() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
                     const hotelId = this.getAttribute('data-hotel-id');
                     const hotelName = this.getAttribute('data-hotel-name');
                     const hotelPrice = this.getAttribute('data-hotel-price');
                     const hotelImage = this.getAttribute('data-hotel-image');
 
-                    fetch('add_to_wishlist.php', {
+                    fetch('add_to_cart.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -171,9 +172,9 @@ include "header.php";
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert('Hotel added to wishlist!');
+                                // Optional: alert or update UI to show item added to cart
                             } else {
-                                alert('Failed to add hotel to wishlist.');
+                                // Optional: alert or show error message
                             }
                         });
                 });
@@ -181,11 +182,7 @@ include "header.php";
         });
     </script>
 
-
-
-
-
-    <!-- <script src="../public/JS/collections.js"></script> -->
+     <!-- <script src="../public/JS/collections.js"></script> -->
 
     <!-- <script>
         $(document).ready(function() {
@@ -195,6 +192,7 @@ include "header.php";
             });
         });
     </script> -->
+
 </body>
 <footer>
     <?php include "footer.php"; ?>
