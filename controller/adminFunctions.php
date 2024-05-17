@@ -242,7 +242,7 @@ public function addflight()
 
     $adminModel->addflight($flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day);
 
-    header("Location: flights.php");
+    header("Location: flights");
     
 }
 public function updateFlight()
@@ -260,7 +260,7 @@ public function updateFlight()
 
     $adminModel->updateFlight($id, $flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day);
 
-    header("Location: flights.php");
+    header("Location: adminflights");
 }
 }
 

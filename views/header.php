@@ -140,7 +140,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Plan your trip</a>
+                        <a class="nav-link" href="flights">Flights</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="hotels">Hotels</a>
