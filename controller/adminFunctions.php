@@ -75,8 +75,6 @@ public   function adduser()
 {    $adminModel = new adminModel();
 
 
-    
-
     $firstname = $_POST["fname"];
     $lastname = $_POST["lname"];
     $email = $_POST["email"];
@@ -229,7 +227,40 @@ public function updateindexphotos()
      } else {
         echo "<script>alert('File upload failed.'); </script>";
     }
+}
+public function addflight()
+{
+    $adminModel = new adminModel();
+    
+    $flight_dep = $_POST["flight_dep"];
+    $flight_arr = $_POST["flight_arr"];
+    $eco_price = $_POST["eco_price"];
+    $bus_price = $_POST["bus_price"];
+    $dept_time = $_POST["dept_time"];
+    $arr_time = $_POST["arr_time"];
+    $flight_day = $_POST["flight_day"];
 
+    $adminModel->addflight($flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day);
+
+    header("Location: flights.php");
+    
+}
+public function updateFlight()
+{
+    $adminModel = new adminModel;
+
+    $id = $_POST["id"];
+    $flight_dep = $_POST["flight_dep"];
+    $flight_arr = $_POST["flight_arr"];
+    $eco_price = $_POST["eco_price"];
+    $bus_price = $_POST["bus_price"];
+    $dept_time = $_POST["dept_time"];
+    $arr_time = $_POST["arr_time"];
+    $flight_day = $_POST["flight_day"];
+
+    $adminModel->updateFlight($id, $flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day);
+
+    header("Location: flights.php");
 }
 }
 
