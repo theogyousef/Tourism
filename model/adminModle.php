@@ -22,6 +22,18 @@ class adminModel extends Model
         $query = "DELETE FROM hotels WHERE id = '$id'";
         mysqli_query($conn, $query);
     }
+    public function addflight($flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day)
+    {
+        $conn = $this->getConn();
+        $query = "insert into flights (flight_dep, flight_arr, eco_price, bus_price, dept_time, arr_time, flight_day) values ('$flight_dep', '$flight_arr', '$eco_price', '$bus_price', '$dept_time', '$arr_time','$flight_day')";
+        mysqli_query($conn, $query);
+    }
+    public function updateFlight($id, $flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day)
+    {
+        $conn = $this->getConn();
+        $query = "UPDATE flights SET flight_dep = '$flight_dep',flight_arr = '$flight_arr',eco_price = '$eco_price',bus_price = '$bus_price',dept_time = '$dept_time', arr_time = '$arr_time', flight_day = '$flight_day' WHERE id = '$id'";
+        mysqli_query($conn,$query);
+    }
     public function deleteflight($id)
     { $conn = $this->getConn();
         $query = "DELETE FROM flights WHERE id = '$id'";
