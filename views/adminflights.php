@@ -102,6 +102,7 @@ include "adminnav.php";
                             <th>Arrival</th>
                             <th>economy Price</th>
                             <th>business Price</th>
+                            <th>date</th>
                             <th>edit</th>
                             <th>Delete</th>
                         </tr>
@@ -131,7 +132,8 @@ include "adminnav.php";
                     <td>" . $row["arr_time"] . "</td>
                     <td>" . $row["eco_price"] . "</td>
                     <td>" . $row["bus_price"] . "</td>
-                    
+                    <td>" . $row["flight_day"] . "</td>
+
                     "
 
 

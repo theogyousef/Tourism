@@ -35,6 +35,7 @@ if (isset($_GET['html']) && $_GET['html'] == 'true') {
                 <td>{$flight['arr_time']}</td>
                 <td>{$flight['eco_price']}</td>
                 <td>{$flight['bus_price']}</td>
+                <td>{$flight['flight_day']}</td>
                 <td><a href='editflight?id={$flight['id']}' style='color: orange;'><span class='fas fa-edit'></span></a></td>
                 <td><a href='deleteflight?id={$flight['id']}' style='color: red;'><span class='fas fa-trash-alt'></span></a></td>
               </tr>";

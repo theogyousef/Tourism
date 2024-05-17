@@ -24,6 +24,8 @@ $(document).ready(function() {
                             rowsHtml += '<td>' + flight.arr_time + '</td>';
                             rowsHtml += '<td>' + flight.eco_price + '</td>';
                             rowsHtml += '<td>' + flight.bus_price + '</td>';
+                            rowsHtml += '<td>' + flight.flight_day + '</td>';
+
                             rowsHtml += '<td><a href="editflight?id=' + flight.id + '" style="color: orange;"><span class="fas fa-edit"></span></a></td>';
                             rowsHtml += '<td><a href="deleteflight?id=' + flight.id + '" style="color: red;"><span class="fas fa-trash-alt"></span></a></td>';
                             rowsHtml += '</tr>';

@@ -95,13 +95,14 @@ include "adminnav.php";
                             <th>Hotel name</th>
                             <th>Price</th>
                             <th>Duration</th>
+                            <th>Date</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-$sql = "SELECT t.ID AS trip_id , t.name , t.flightID , t.hotelID , f.dept_time, f.arr_time, f.flight_dep, f.flight_arr, f.eco_price, h.name AS hotel_name, h.price, h.duration FROM trips t
+$sql = "SELECT t.ID AS trip_id , t.name , t.flightID , t.hotelID , f.dept_time, f.arr_time, f.flight_dep, f.flight_arr, f.eco_price, f.flight_day , h.name AS hotel_name, h.price, h.duration FROM trips t
         JOIN flights f ON t.flightID = f.id
         JOIN hotels h ON t.hotelID = h.ID";
 $result = mysqli_query($conn, $sql);
@@ -120,6 +121,8 @@ while ($row = mysqli_fetch_assoc($result)) {
         <td>" . $row["hotel_name"] . "</td>
         <td>" . $totalprice . "</td>
         <td>" . $row["duration"] . "</td>
+        <td>" . $row["flight_day"] . "</td>
+
         <td>
             <a href='edittrip?id=" . $row["trip_id"] . "' style='color: orange;'>
                 <span class='fas fa-edit'></span>
