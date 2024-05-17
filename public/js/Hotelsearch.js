@@ -54,6 +54,5 @@ $(document).ready(function() {
         });
     }
 
-    // Load all hotels on page load
     fetchAllHotels();
 });

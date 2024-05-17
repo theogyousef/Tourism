@@ -12,7 +12,6 @@ $(document).ready(function() {
                     var users = JSON.parse(response);
                     
                     if (users.length === 0) {
-                        // << If no users are found, display "User not found" >>
                         $(".custom-table tbody").html('<tr><td colspan="9">User not found</td></tr>');
                     } else {
                         var rowsHtml = '';

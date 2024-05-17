@@ -148,8 +148,11 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                        <a class="nav-link" href="#" id="search-icon"><i class="bi bi-search"></i></a>
+                        <input type="text" id="search-input" placeholder="Search hotels or flights..." onkeyup="liveSearch()">
+                        <div id="searchResults"></div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-heart"></i></a>
                     </li>
@@ -184,4 +187,7 @@
         </div>
     </nav>
 
+<script>
+    <?php include "../public/js/indexSearch.js" ?>
+</script>
 </body>

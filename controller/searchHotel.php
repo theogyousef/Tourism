@@ -1,22 +1,17 @@
 <?php
 require_once "../model/adminModle.php";
 
-// Create a new instance of the adminModel to initialize the database connection
 $adminModel = new adminModel();
 $conn = $adminModel->getConn();
 
-// Check if the connection is established
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-// Check if the search term exists, and assign value or an empty string to the variable
 $searchTerm = isset($_GET['query']) ? mysqli_real_escape_string($conn, $_GET['query']) : '';
 
-// Split the search term into parts by space
 $searchTerms = explode(' ', $searchTerm);
 
-// Construct the query based on the search terms, but only for name and location
 $query = "SELECT * FROM hotels";
 if ($searchTerm !== '') {
     $conditions = [];
@@ -30,7 +25,6 @@ if ($searchTerm !== '') {
 $result = mysqli_query($conn, $query);
 $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-// Returning the HTML after searching
 if (isset($_GET['html']) && $_GET['html'] == 'true') {
     foreach ($hotels as $hotel) {
         echo "<tr>
