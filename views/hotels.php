@@ -52,8 +52,7 @@ include "header.php";
             <div class="row mb-3" id="filters">
                 <div class="col-md-2">
                     <form class="filter" id="filterF" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Availability"
-                            name="availability" data-form-id="filterF">
+                        <select class="form-select filter-select filter-dropdown" aria-label="Availability" name="availability" data-form-id="filterF">
                             <option value="">Availability</option>
                             <option value="1">Available</option>
                             <option value="2">Full !</option>
@@ -62,8 +61,7 @@ include "header.php";
                 </div>
                 <div class="col-md-2">
                     <form class="filter" id="filterCategory" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Category" name="category"
-                            data-form-id="filterCategory">
+                        <select class="form-select filter-select filter-dropdown" aria-label="Category" name="category" data-form-id="filterCategory">
                             <option value="">Rating Stars</option>
                             <option value="1">Category 1</option>
                             <option value="2">Category 2</option>
@@ -74,8 +72,7 @@ include "header.php";
 
                 <div class="col-md-2">
                     <form class="filter" id="filterForm" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Price" name="price"
-                            data-form-id="filterForm">
+                        <select class="form-select filter-select filter-dropdown" aria-label="Price" name="price" data-form-id="filterForm">
                             <option value="">Price</option>
                             <option value="4">Highest To Lowest</option>
                             <option value="5">Lowest To Highest</option>
@@ -107,49 +104,84 @@ include "header.php";
         </div>
 
         <div class="container grid-container">
-    <div class="row">
-        <?php
-        $result = $fetchModle->allhotels();
+            <div class="row">
+                <?php
+                $result = $fetchModle->allhotels();
 
-        if (mysqli_num_rows($result) > 0) {
-            $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        }
-        ?>
+                if (mysqli_num_rows($result) > 0) {
+                    $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                }
+                ?>
 
-        <?php if (!empty($hotels)): ?>
-            <?php foreach ($hotels as $hotel): ?>
-                <div class="col-md-3 mb-4">
-                    <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" style="text-decoration: none; color: inherit;">
-                        <div style="width: 300px;" class="card mb-4 product-card">
-                            <img src="<?php echo $hotel['photo']; ?>" class="card-img-top"
-                                alt="<?php echo $hotel['name']; ?>">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $hotel['name']; ?></h5>
-                                <li class="list-group-item"><?php echo $hotel['location']; ?></li>
+                <?php if (!empty($hotels)) : ?>
+                    <?php foreach ($hotels as $hotel) : ?>
+                        <div class="col-md-3 mb-4">
+                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" style="text-decoration: none; color: inherit;">
+                                <div style="width: 300px;" class="card mb-4 product-card">
+                                    <img src="<?php echo $hotel['photo']; ?>" class="card-img-top" alt="<?php echo $hotel['name']; ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $hotel['name']; ?></h5>
+                                        <li class="list-group-item"><?php echo $hotel['location']; ?></li>
 
-                                <ul style="margin-left: 80px; font-weight: bold;" class="list-group list-group-flush">
-                                    <li class="list-group-item" style="display: flex; align-items: center;">
-                                        <?php echo number_format($hotel['price'], 2) . ' LE'; ?>
-                                        <p style="color: orange; margin-left: 5px; margin-bottom: 0;">/night</p>
-                                    </li>
-                                </ul>
-                                <div class="product-actions mt-3">
-                                    <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="btn btn-primary">Book Now</a>
-                                    <button class="btn btn-secondary">Add to Wishlist</button>
+                                        <ul style="margin-left: 80px; font-weight: bold;" class="list-group list-group-flush">
+                                            <li class="list-group-item" style="display: flex; align-items: center;">
+                                                <?php echo number_format($hotel['price'], 2) . ' LE'; ?>
+                                                <p style="color: orange; margin-left: 5px; margin-bottom: 0;">/night</p>
+                                            </li>
+                                        </ul>
+                                        <div class="product-actions mt-3">
+                                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="btn btn-primary">Book Now</a>
+                                            <button class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No products found.</p>
-        <?php endif; ?>
-    </div>
-</div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No products found.</p>
+                <?php endif; ?>
+            </div>
+        </div>
 
 
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.add-to-wishlist').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    const hotelName = this.getAttribute('data-hotel-name');
+                    const hotelPrice = this.getAttribute('data-hotel-price');
+                    const hotelImage = this.getAttribute('data-hotel-image');
+
+                    fetch('add_to_wishlist.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: hotelId,
+                                name: hotelName,
+                                price: hotelPrice,
+                                image: hotelImage
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Hotel added to wishlist!');
+                            } else {
+                                alert('Failed to add hotel to wishlist.');
+                            }
+                        });
+                });
+            });
+        });
+    </script>
+
+
 
 
 
