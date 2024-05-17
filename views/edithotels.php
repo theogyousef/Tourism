@@ -46,6 +46,16 @@ if (isset($_GET['id'])) {
 } else {
     echo '<p>Product ID is not provided.</p>';
 }
+
+$dbh = new Dbh();
+$sql = "SELECT * FROM cities";
+$result = mysqli_query($conn, $sql);
+$cities = [];
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $cities[] = $row['city_name'];
+    }
+}
 include "adminnav.php";
 
 
@@ -96,45 +106,20 @@ include "adminnav.php";
                                 value="<?php echo $productDetails['price'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="stock">Select a type:</label>
-                            <select class="form-control" id="type" name="location">
-                                <option value="<?php echo $productDetails['location'] ?>" selected>
+                            <label class="form-label">Duration in nights</label>
+                            <input type="text" class="form-control" name="duration" required
+                                value="<?php echo $productDetails['duration'] ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock">Select a location:</label>
+                            <select class="form-control" name="location" required>
+                            <option value="<?php echo $productDetails['location'] ?>" selected>
                                     <?php echo $productDetails['location'] ?>
-                                </option>
-                                <option value="Cairo">Cairo (Al Qahirah)</option>
-                                <option value="Giza">Giza (Al Jizah)</option>
-                                <option value="Alexandria">Alexandria (Al Iskandariyah)</option>
-                                <option value="Qalyubia">Qalyubia (Al Qalyubiyah)</option>
-                                <option value="Port Said">Port Said (Bur Sa'id)</option>
-                                <option value="Suez">Suez (As Suways)</option>
-                                <option value="Ismailia">Ismailia (Al Isma'iliyah)</option>
-                                <option value="Damietta">Damietta (Dumyat)</option>
-                                <option value="Dakahlia">Dakahlia (Ad Daqahliyah)</option>
-                                <option value="Sharqia">Sharqia (Ash Sharqiyah)</option>
-                                <option value="Kafr El Sheikh">Kafr El Sheikh (Kafr ash Shaykh)</option>
-                                <option value="Gharbia">Gharbia (Al Gharbiyah)</option>
-                                <option value="Monufia">Monufia (Al Minufiyah)</option>
-                                <option value="Beheira">Beheira (Al Buhayrah)</option>
-                                <option value="Faiyum">Faiyum (Al Fayyum)</option>
-                                <option value="Beni Suef">Beni Suef (Bani Suwayf)</option>
-                                <option value="Minya">Minya (Al Minya)</option>
-                                <option value="Asyut">Asyut (Asyut)</option>
-                                <option value="Sohag">Sohag (Suhaj)</option>
-                                <option value="Qena">Qena (Qina)</option>
-                                <option value="Luxor">Luxor (Al Uqsur)</option>
-                                <option value="Aswan">Aswan (Aswan)</option>
-                                <option value="Red Sea">Red Sea (Al Bahr al Ahmar)</option>
-                                <option value="New Valley">New Valley (Al Wadi al Jadid)</option>
-                                <option value="Matruh">Matruh (Matruh)</option>
-                                <option value="North Sinai">North Sinai (Shamal Sina)</option>
-                                <option value="South Sinai">South Sinai (Janub Sina)</option>
-                            </select>
-
-
-
-
-                            </select>
-
+                                </option>                            <?php
+                                foreach ($cities as $city) {
+                                    echo "<option value='" . $city . "'>" . $city . "</option>";
+                                }?>
+                            </select>  
                         </div>
             
                    

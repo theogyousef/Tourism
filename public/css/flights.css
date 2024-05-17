@@ -4,6 +4,14 @@ body {
   padding: 0;
   background-color: #eaecef;
 }
+h1 {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 30px !important;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+  color: #134074;
+}
 .flights {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px;

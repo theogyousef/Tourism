@@ -32,6 +32,20 @@ public function addhotel()
 
 
 }
+
+public function addtrip()
+{
+    $adminModel = new adminModel();
+    $name = $_POST["name"];
+    $hotel = $_POST["hotel"];
+    $flight = $_POST["flight"];
+
+    $adminModel->addtrip($name, $hotel, $flight );
+
+    header("Location: admintrips");
+
+
+}
 public function updatehotel()
 {    $adminModel = new adminModel();
 
@@ -40,11 +54,27 @@ public function updatehotel()
     $name = $_POST["name"];
     $price = $_POST["price"];
     $location = $_POST["location"];
-  
+  $duration = $_POST["duration"];
    
     /// apply th query to db by pass to the handler func
-    $adminModel->updatehotel($id, $name, $price, $location);
+    $adminModel->updatehotel($id, $name, $price, $location , $duration);
     header("Location: adminhotels");
+
+
+}
+
+public function updatetrip()
+{    $adminModel = new adminModel();
+
+
+    $id = $_POST["ID"];
+    $name = $_POST["name"];
+    $hotel = $_POST["hotel"];
+    $flight = $_POST["flight"];
+   
+    /// apply th query to db by pass to the handler func
+    $adminModel->updatetrip($id, $name, $hotel, $flight );
+    header("Location: admintrips");
 
 
 }
@@ -58,7 +88,16 @@ public function deletehotel()
     header("Location: adminhotels");
 
 }
+public function deletetrip()
+{    $adminModel = new adminModel();
 
+
+
+    $id = $_POST["id"];
+    $adminModel->deletetrip($id);
+    header("Location: admintrips");
+
+}
 public function deleteflight()
 {    $adminModel = new adminModel();
 

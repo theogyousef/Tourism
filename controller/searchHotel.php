@@ -32,7 +32,8 @@ if (isset($_GET['html']) && $_GET['html'] == 'true') {
                 <td>{$hotel['name']}</td>
                 <td>{$hotel['location']}</td>
                 <td>{$hotel['price']}</td>
-                <td><a href='edithotel?id={$hotel['ID']}' style='color: orange;'><span class='fas fa-edit'></span></a></td>
+                <td>{$hotel['duration']}</td>
+                <td><a href='edithotels?id={$hotel['ID']}' style='color: orange;'><span class='fas fa-edit'></span></a></td>
                 <td><a href='deletehotel?id={$hotel['ID']}' style='color: red;'><span class='fas fa-trash-alt'></span></a></td>
               </tr>";
     }

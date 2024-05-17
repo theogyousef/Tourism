@@ -125,7 +125,8 @@ $flights = $result->fetch_all(MYSQLI_ASSOC);
 
 
                             <div class="product-actions mt-3">
-                                <a href="hotel-details?id=<?php echo $flight['id']; ?>" class="btn btn-primary">Book Now</a>
+                            
+                                <button  class="btn btn-primary">Book Now</button>
                                 <button class="btn btn-secondary add-to-wishlist">Add to Wishlist</button>
                             </div>
                         </div>

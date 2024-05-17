@@ -169,6 +169,8 @@
                                 <?php if (isset($row) && isset($row["guest"]) && $row["guest"] != 1) { ?>
 
                                     <li><a class="dropdown-item" href="profilesettings">profile settings </a></li>
+                                    <li><a class="dropdown-item" href="mybookings">My bookings </a></li>
+
                                     <?php if ($row["admin"] == 1) {
                                         echo ' <li><a class="dropdown-item" href="admindashboard">Admin dashboard </a></li> ';
                                     } ?>

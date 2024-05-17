@@ -10,9 +10,23 @@ class adminModel extends Model
 
         mysqli_query($conn, $query);
     }
-    public function updatehotel($id, $name, $price, $location)
+
+    public function addtrip($name, $hotel, $flight )
+    {       $conn = $this->getConn();
+
+        $query = "insert into trips (name,hotelID,flightID) values (' $name','$hotel' ,'$flight')";
+
+        mysqli_query($conn, $query);
+    }
+    public function updatehotel($id, $name, $price, $location , $duration)
     { $conn = $this->getConn();
-        $query = "update hotels set name ='$name',price ='$price',location ='$location' where id = '$id'";
+        $query = "update hotels set name ='$name',price ='$price',location ='$location' , duration = '$duration' where id = '$id'";
+
+        mysqli_query($conn, $query);
+    }
+    public function updatetrip($id, $name, $hotel, $flight )
+    { $conn = $this->getConn();
+        $query = "update trips set name ='$name',flightID ='$flight', hotelID ='$hotel'where id = '$id'";
 
         mysqli_query($conn, $query);
     }
@@ -20,6 +34,11 @@ class adminModel extends Model
     public function deletehotel($id)
     { $conn = $this->getConn();
         $query = "DELETE FROM hotels WHERE id = '$id'";
+        mysqli_query($conn, $query);
+    }
+    public function deletetrip($id)
+    { $conn = $this->getConn();
+        $query = "DELETE FROM trips WHERE id = '$id'";
         mysqli_query($conn, $query);
     }
     public function addflight($flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day)

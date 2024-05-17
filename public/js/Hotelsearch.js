@@ -21,7 +21,8 @@ $(document).ready(function() {
                             rowsHtml += '<td>' + hotel.name + '</td>';
                             rowsHtml += '<td>' + hotel.location + '</td>';
                             rowsHtml += '<td>' + hotel.price + '</td>';
-                            rowsHtml += '<td><a href="edithotel?id=' + hotel.ID + '" style="color: orange;"><span class="fas fa-edit"></span></a></td>';
+                            rowsHtml += '<td>' + hotel.duration + '</td>';
+                            rowsHtml += '<td><a href="edithotels?id=' + hotel.ID + '" style="color: orange;"><span class="fas fa-edit"></span></a></td>';
                             rowsHtml += '<td><a href="deletehotel?id=' + hotel.ID + '" style="color: red;"><span class="fas fa-trash-alt"></span></a></td>';
                             rowsHtml += '</tr>';
                         });

@@ -109,29 +109,32 @@ if (mysqli_num_rows($result) > 0) {
                             <!-- <input type="text" class="form-control" name="flight_dep" required
                                 value=""> -->
                             <select class="form-control" name="flight_dep" required>
-                            <option value="" disabled selected> </option>
-                            <?php
+                                <option value="<?php echo $flightDetails['flight_dep'] ?>" selected>
+                                    <?php echo $flightDetails['flight_dep'] ?>
+                                </option> <?php
                                 foreach ($cities as $city) {
                                     echo "<option value='" . $city . "'>" . $city . "</option>";
-                                }?>
-                            </select>   
+                                } ?>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Arrival City</label>
                             <select class="form-control" name="flight_arr" required>
-                            <option value="<?php echo $flightDetails['flight_arr'] ?>" disabled selected> </option>
-                            <?php
+                                <option value="<?php echo $flightDetails['flight_arr'] ?>" selected>
+                                    <?php echo $flightDetails['flight_arr'] ?>
+                                </option> <?php
                                 foreach ($cities as $city) {
                                     echo "<option value='" . $city . "'>" . $city . "</option>";
-                                }?>
-                            </select>   
+                                } ?>
+                            </select>
                         </div>
                         <div class="mb-3">
-                             <label class="form-label">Departure Date</label>
-                             <input type="date" class="form-control" name="flight_day" required value="<?php echo $flightDetails['flight_day']; ?>">
+                            <label class="form-label">Departure Date</label>
+                            <input type="date" class="form-control" name="flight_day" required
+                                value="<?php echo $flightDetails['flight_day']; ?>">
                         </div>
 
-                        
+
                         <div class="mb-3">
                             <input type="submit" name="updateflight" value="Update Flight"
                                 style="background-color: #007BFF; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">

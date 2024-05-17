@@ -100,6 +100,7 @@ include "adminnav.php";
                             <th>Name</th>
                             <th>Location</th>
                             <th>Price</th>
+                            <th>Duration</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -126,6 +127,8 @@ include "adminnav.php";
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["location"] . "</td>
                     <td>" . $row["price"] . "</td>
+                    <td>" . $row["duration"] . "</td>
+
                     "
 
 
