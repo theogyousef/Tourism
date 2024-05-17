@@ -103,7 +103,7 @@ if (isset($_GET['remove'])) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 
     <footer>
