@@ -26,8 +26,8 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
@@ -44,7 +44,7 @@
                         <h4>Our Services</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Book Full Trip </a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Book Hotel</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="hotels.php">Book Hotel</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Book Transportation</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Discover Egpyt</a></li>
                         </ul>

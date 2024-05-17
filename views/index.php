@@ -42,8 +42,7 @@ include "header.php";
     <title>Egypt Tourism</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
@@ -173,18 +172,14 @@ include "header.php";
 
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <video id="myVideo" width="100%" autoplay loop muted>
-                    <source src="../public/photos/y2mate.is - This is Egypt-mfxQy5A_tHs-720p-1714078248.mp4"
-                        type="video/mp4">
+                    <source src="../public/photos/y2mate.is - This is Egypt-mfxQy5A_tHs-720p-1714078248.mp4" type="video/mp4">
                 </video>
             </div>
 
@@ -199,25 +194,21 @@ include "header.php";
                 <img src="../public/photos/aswan1.jpg" class="d-block w-100" alt="..." width="100%">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
-    <div class="container-simple-text with-background-image"
-        style="background-image: url('https://tourismmedia.italia.it/is/image/mitur/landscape_1-100-1?wid=2880&amp;hei=1280&amp;fit=constrain,1&amp;fmt=webp'); background-size: cover; height: 300px;">
+    <div class="container-simple-text with-background-image" style="background-image: url('https://tourismmedia.italia.it/is/image/mitur/landscape_1-100-1?wid=2880&amp;hei=1280&amp;fit=constrain,1&amp;fmt=webp'); background-size: cover; height: 300px;">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-lg-1">
-                    <div
-                        class="container-simple-text__container-text container-simple-text__container-text--desktop-center container-simple-text__container-text--mobile-center text-center">
+                    <div class="container-simple-text__container-text container-simple-text__container-text--desktop-center container-simple-text__container-text--mobile-center text-center">
                         <div class="container-simple-text__container-text__fs-28-38">
                             <h2 class="container-simple-text__title mb-0" style="margin-top: 100px; color: #13315C;">
                                 Landscapes that will take your breath away, rich <br> history, and delicious food, your
@@ -238,12 +229,8 @@ include "header.php";
             <div class="row">
                 <div class="position-relative text-center" style="height : 300;">
                     <a href="#" id="centered-anchor" class="d-block" style="height : 300;">
-                        <img src="https://cityedgedevelopments.com/uploads/destinations/destination_4/cover_image03e4e8bd-0f1d-4a40-8dbe-fc350a64da36.jpg"
-                            alt="Clickable Image" class="img-fluid mx-auto" height="300px">
-                        <button
-                            class="btn mitur btn-lg position-absolute bottom-0 start-50 translate-middle-x rounded-pill"
-                            style="bottom: -20px; background-color: #0B2545; color: white; margin-bottom: -60PX;"
-                            id="shopnow">
+                        <img src="https://cityedgedevelopments.com/uploads/destinations/destination_4/cover_image03e4e8bd-0f1d-4a40-8dbe-fc350a64da36.jpg" alt="Clickable Image" class="img-fluid mx-auto" height="300px">
+                        <button class="btn mitur btn-lg position-absolute bottom-0 start-50 translate-middle-x rounded-pill" style="bottom: -20px; background-color: #0B2545; color: white; margin-bottom: -60PX;" id="shopnow">
                             BOOK NOW
                         </button>
                     </a>
@@ -268,31 +255,28 @@ include "header.php";
 
                     $result = $fetchModle->allhotels();
 
-
                     if (mysqli_num_rows($result) > 0) {
                         $hotels = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     }
                     ?>
 
-                    <?php if (!empty($hotels)): ?>
-                        <?php foreach ($hotels as $hotel): ?>
+                    <?php if (!empty($hotels)) : ?>
+                        <?php foreach ($hotels as $hotel) : ?>
                             <div class="col-md-3">
                                 <a href="hotel-details?id=<?php echo $hotel['ID']; ?>">
                                     <div class="products">
                                         <div class="product-image">
                                             <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="images">
-                                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>"
-                                                    class="pic-1" width="500px">
-                                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>"
-                                                    class="pic-2" width="500px">
+                                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>" class="pic-1" width="500px">
+                                                <img src="<?php echo $hotel['photo']; ?>" alt="<?php echo $hotel['name']; ?>" class="pic-2" width="500px">
                                             </a>
                                             <div class="links">
                                                 <div class="Icon">
-                                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
+                                                    <a href="#" class="add-to-cart" data-id="<?php echo $hotel['ID']; ?>" data-name="<?php echo $hotel['name']; ?>" data-price="<?php echo $hotel['price']; ?>" data-image="<?php echo $hotel['photo']; ?>"><i class="bi bi-cart3"></i></a>
                                                     <span class="tooltiptext">Add to cart</span>
                                                 </div>
                                                 <div class="Icon">
-                                                    <a href="#"><i class="bi bi-heart"></i></i></a>
+                                                    <a href="#"><i class="bi bi-heart"></i></a>
                                                     <span class="tooltiptext">Move to wishlist</span>
                                                 </div>
                                             </div>
@@ -301,12 +285,11 @@ include "header.php";
                                             <div class="Content">
                                                 <h3 style="color: #000;"><?php echo $hotel['name']; ?></h3>
                                                 <p class="detailsinfo">
-                                                    <span class="typetrip"><?php echo $hotel['location']; ?></span> <span
-                                                        class="separate"></span> <span class="nofdays">Egypt</span>
+                                                    <span class="typetrip"><?php echo $hotel['location']; ?></span> <span class="separate"></span> <span class="nofdays">Egypt</span>
                                                 </p>
                                                 <div class="cost">
                                                     <p class="lower-price">
-                                                        From <span class="price"><?php echo  number_format($hotel['price'] , 2) . ' LE' ; ?></span>
+                                                        From <span class="price"><?php echo number_format($hotel['price'], 2) . ' LE'; ?></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -314,15 +297,15 @@ include "header.php";
                                     </div>
                                 </a>
                             </div>
-
                         <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php else : ?>
                         <p>No products found.</p>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- map -->
     <div>
         <section class="featured-destinations py-5">
@@ -354,8 +337,7 @@ include "header.php";
                             <a href="" class="images">
                                 <img src="../public/photos/aswan1.jpg" alt="newyork photo" class="pic-1" width="500px">
 
-                                <img src="../public/photos/aswan2.jpg" alt="sanfransisco photo" class="pic-2"
-                                    width="500px">
+                                <img src="../public/photos/aswan2.jpg" alt="sanfransisco photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
                                 <div class="Icon">
@@ -370,12 +352,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Aswan&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;Alexandria
+                                Aswan&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Alexandria
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">7 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">7 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -390,8 +370,7 @@ include "header.php";
                     <div class="flights">
                         <div class="flight-image">
                             <a href="" class="images">
-                                <img src="../public/photos/Siwa-Oasis-Egypt-1.webp" alt="switzerland photo"
-                                    class="pic-1" width="500px">
+                                <img src="../public/photos/Siwa-Oasis-Egypt-1.webp" alt="switzerland photo" class="pic-1" width="500px">
                                 <img src="../public/photos/aswan2.jpg" alt="Greece photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
@@ -408,12 +387,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Siwa&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;Aswan
+                                Siwa&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Aswan
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">4 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">4 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -428,8 +405,7 @@ include "header.php";
                     <div class="flights">
                         <div class="flight-image">
                             <a href="" class="images">
-                                <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2022/05/el-cairo-torre-888.jpg"
-                                    alt="Egypt photo" class="pic-1" width="500px">
+                                <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2022/05/el-cairo-torre-888.jpg" alt="Egypt photo" class="pic-1" width="500px">
                                 <img src="../public/photos/sharm.jpg" alt="Morocco photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
@@ -447,12 +423,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Cairo&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;Sharm-EL-Sheikh
+                                Cairo&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Sharm-EL-Sheikh
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">3 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">3 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -468,8 +442,7 @@ include "header.php";
                         <div class="flight-image">
                             <a href="" class="images">
                                 <img src="../public/photos/alex.jpg" alt="London photo" class="pic-1" width="500px">
-                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/05/mount-sinai-sunrise-scaled.jpg?fit=4500%2C3000&ssl=1"
-                                    alt="newyork photo" class="pic-2" width="500px">
+                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/05/mount-sinai-sunrise-scaled.jpg?fit=4500%2C3000&ssl=1" alt="newyork photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
                                 <div class="Icon">
@@ -486,12 +459,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Alexandria&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;Sinai
+                                Alexandria&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Sinai
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">7 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">7 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -507,8 +478,7 @@ include "header.php";
                         <div class="flight-image">
                             <a href="" class="images">
                                 <img src="../public/photos/dahab2.jpg" alt="Istanbul photo" class="pic-1" width="500px">
-                                <img src="../public/photos/marsa matrouh.jpg" alt="Paris photo" class="pic-2"
-                                    width="500px">
+                                <img src="../public/photos/marsa matrouh.jpg" alt="Paris photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
                                 <div class="Icon">
@@ -524,12 +494,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Dahab&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;Marsa Matrouh
+                                Dahab&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Marsa Matrouh
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">2 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">2 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -545,8 +513,7 @@ include "header.php";
                         <div class="flight-image">
                             <a href="" class="images">
                                 <img src="../public/photos/giza.jpg" alt="Maldives photo" class="pic-1" width="500px">
-                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/01/st-catherines-monastery-174446_1920.jpg?resize=1536%2C1024&ssl=1"
-                                    alt="Dubai photo" class="pic-2" width="500px">
+                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/01/st-catherines-monastery-174446_1920.jpg?resize=1536%2C1024&ssl=1" alt="Dubai photo" class="pic-2" width="500px">
                             </a>
                             <div class="links">
                                 <div class="Icon">
@@ -561,12 +528,10 @@ include "header.php";
                         </div>
                         <div class="Content">
                             <h3 class="product-title">
-                                Giza&nbsp; &nbsp;<span class="arrow"><i
-                                        class='bx bx-transfer-alt'></i></span>&nbsp;saint catherine
+                                Giza&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;saint catherine
                             </h3>
                             <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span
-                                    class="nofdays">8 days</span>
+                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">8 days</span>
                             </p>
                             <div class="cost">
                                 <p class="lower-price">
@@ -598,8 +563,7 @@ include "header.php";
             </div>
             <div class="col-md-6">
                 <div class="image-container position-relative text-center">
-                    <div class="background-image"
-                        style="background-image: url('https://tourismmedia.italia.it/is/image/mitur/landscape_1-100-1?wid=2880&amp;hei=1280&amp;fit=constrain,1&amp;fmt=webp'); height: 435px; width: 900px;">
+                    <div class="background-image" style="background-image: url('https://tourismmedia.italia.it/is/image/mitur/landscape_1-100-1?wid=2880&amp;hei=1280&amp;fit=constrain,1&amp;fmt=webp'); height: 435px; width: 900px;">
                         <div class="overlay d-flex flex-column justify-content-center align-items-center">
                             <div class="quote mt-2 text-center align-items-center " style="margin-left: 30px;">
                                 <h4 class="custom-about-us">STAY WITH US</h4>
@@ -612,8 +576,7 @@ include "header.php";
                             <form id="ContactFooter" class="footer-form">
                                 <div class="d-flex">
                                     <div class="form-floating me-2">
-                                        <input type="email" name="email" class="form-control border-0" id="email"
-                                            placeholder=" " style="background:#F0F0F0		; color: #000;">
+                                        <input type="email" name="email" class="form-control border-0" id="email" placeholder=" " style="background:#F0F0F0		; color: #000;">
                                         <label for="email">Enter your email address</label>
                                     </div>
                                     <button type="button" id="submitMailButton" class="btn-About-us btn-dark">Sign
@@ -640,6 +603,43 @@ include "header.php";
 <script>
     <?php include "../public/js/index.js" ?>
     <?php include "../public/js/ajaxHandlers.js" ?>
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cartButtons = document.querySelectorAll(".add-to-cart");
+
+        cartButtons.forEach(button => {
+            button.addEventListener("click", function(e) {
+                e.preventDefault();
+                const id = this.getAttribute("data-id");
+                const name = this.getAttribute("data-name");
+                const price = this.getAttribute("data-price");
+                const image = this.getAttribute("data-image");
+
+                fetch("add_to_cart.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            id,
+                            name,
+                            price,
+                            image
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Added to cart!");
+                        } else {
+                            alert("Failed to add to cart.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+            });
+        });
+    });
 </script>
 
 </html>
