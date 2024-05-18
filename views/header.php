@@ -145,6 +145,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="hotels">Hotels</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="trips">Trips</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">

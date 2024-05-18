@@ -82,6 +82,10 @@ class Routere
             require '../views/hotels.php';
             exit();
         }
+        elseif ($path === '/tourism/views/trips') {
+            require '../views/trips.php';
+            exit();
+        }
         elseif ($path === '/tourism/views/users') {
             require '../views/users.php';
             exit();
