@@ -3,12 +3,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// include "header.php";
 require_once '../model/fetchModle.php';
 require_once '../controller/usercontroller.php';
+
 $usercontroller = new usercontroller();
 $fetchModle = new fetchModle();
 $conn = $usercontroller->getConn();
+
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
     $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
     $row = mysqli_fetch_assoc($result);
@@ -24,18 +25,18 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
 
 if (isset($_GET['remove'])) {
     $id = $_GET['remove'];
-    foreach ($_SESSION['products'] as $key => $product) {
-        if ($product['id'] == $id) {
-            unset($_SESSION['products'][$key]);
+    foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['id'] == $id) {
+            unset($_SESSION['cart'][$key]);
             break;
         }
     }
-    $_SESSION['products'] = array_values($_SESSION['products']);
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
     header('Location: cart');
     exit;
 }
 
- include "header.php";
+include "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -66,36 +67,44 @@ if (isset($_GET['remove'])) {
         <div class="container">
             <div class="row">
                 <?php $total = 0; ?>
-                <?php if (!empty($_SESSION['products'])) : ?>
-                    <?php foreach ($_SESSION['products'] as $product) : ?>
+                <?php if (!empty($_SESSION['cart'])) : ?>
+                    <?php foreach ($_SESSION['cart'] as $item) : ?>
                         <?php
-                        $total += $product['price'];
+                        // Ensure price is numeric
+                        $price = is_numeric($item['price']) ? (float)$item['price'] : 0;
+                        $total += $price;
                         ?>
                         <div class="col-md-12 mb-3">
                             <div class="card" style="width: 100%;">
                                 <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <?php if (isset($product['image'])) : ?>
-                                            <a href="product?id=<?php echo $product['id']; ?>">
-                                                <img src="<?php echo $product['image']; ?>" class="img-fluid rounded-start" alt="...">
+                                    <?php if ($item['type'] === 'product' && isset($item['image'])) : ?>
+                                        <div class="col-md-2">
+                                            <a href="product?id=<?php echo $item['id']; ?>">
+                                                <img src="<?php echo $item['image']; ?>" class="img-fluid rounded-start" alt="...">
                                             </a>
-                                        <?php endif; ?>
-                                    </div>
+                                        </div>
+                                    <?php endif; ?>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <?php if (isset($product['name'])) : ?>
-                                                <h5 class="card-title"><a href="product?id=<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a></h5>
-                                            <?php endif; ?>
-                                            <?php if (isset($product['price'])) : ?>
-                                                <p class="card-text"><?php echo  number_format($product['price'],2); ?> EGP</p>
-                                            <?php endif; ?>
-                                            <?php if (isset($product['options'])) : ?>
-                                                <p class="card-text"><?php echo $product['options']; ?></p>
+                                            <?php if (isset($item['name'])) : ?>
+                                                <h5 class="card-title">
+                                                    <a href="product?id=<?php echo $item['id']; ?>"><?php echo $item['name']; ?></a>
+                                                </h5>
+                                                <?php if (isset($item['price'])) : ?>
+                                                    <p class="card-text"><?php echo number_format($item['price'], 2); ?> EGP</p>
+                                                <?php endif; ?>
+                                                <?php if (isset($item['options'])) : ?>
+                                                    <p class="card-text"><?php echo $item['options']; ?></p>
+                                                <?php endif; ?>
+                                            <?php else : ?>
+                                                <h5 class="card-title"><?php echo $item['dep'] . ' to ' . $item['arr']; ?></h5>
+                                                <p class="card-text"><?php echo $item['day'] . ', ' . $item['deptime'] . ' - ' . $item['arrtime']; ?></p>
+                                                <p class="card-text"><?php echo $item['duration']; ?></p>
                                             <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="col-md-2 d-flex align-items-center justify-content-center">
-                                        <a href="cart.php?remove=<?php echo $product['id']; ?>" class="trash-icon"><i class="far fa-trash-alt"></i></a>
+                                        <a href="cart.php?remove=<?php echo $item['id']; ?>" class="trash-icon"><i class="far fa-trash-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -108,13 +117,13 @@ if (isset($_GET['remove'])) {
 
             <div class="row mt-4">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                    <h3>Total: <?php echo  number_format($total,2); ?> EGP</h3>
+                    <h3>Total: <?php echo number_format($total, 2); ?> EGP</h3>
                     <?php $_SESSION['total'] = $total; ?>
                     <div>
-                        <?php if (empty($_SESSION['products'])) : ?>
+                        <?php if (empty($_SESSION['cart'])) : ?>
                             <a href="hotels" class="btn btn-primary">Discover More</a>
                         <?php endif; ?>
-                        <?php if (!empty($_SESSION['products'])) : ?>
+                        <?php if (!empty($_SESSION['cart'])) : ?>
                             <a href="confirmaddress" class="btn btn-success">Proceed to Checkout</a>
                         <?php endif; ?>
                     </div>
@@ -127,7 +136,6 @@ if (isset($_GET['remove'])) {
         <?php include "footer.php"; ?>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>
