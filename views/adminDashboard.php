@@ -9,13 +9,13 @@ require_once '../controller/usercontroller.php';
 $usercontroller = new usercontroller();
 
 if (!empty($_SESSION["id"])) {
-	$id = $_SESSION["id"];
-	$conn = $usercontroller->getConn();
-	$result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
-	$row = mysqli_fetch_assoc($result);
-  } else {
-	header("Location: login");
-  }
+    $id = $_SESSION["id"];
+    $conn = $usercontroller->getConn();
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $row = mysqli_fetch_assoc($result);
+} else {
+    header("Location: login");
+}
 
 if ($row["admin"] != 1) {
     header("Location: index");
@@ -56,7 +56,7 @@ include "adminnav.php";
 
         <!-- Dashboard -->
         <div class="main" id="mainpart">
-            <div class="cards">
+            <div class="cards" style="padding-bottom: 0;">
 
 
 
@@ -83,6 +83,27 @@ include "adminnav.php";
                     </div>
                 </div>
 
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">
+                            <?php
+                            $sql = "SELECT * from bookings ";
+                            $resultbooking = mysqli_query($conn, $sql);
+                            $counterbooking = 0;
+                            while ($row = mysqli_fetch_assoc($resultbooking)) {
+                                $counterbooking++;
+                            }
+                            echo $counterbooking ?>
+                        </div>
+                        <div class="card-name">Total bookings </div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-link"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cards">
 
                 <div class="card">
                     <div class="card-content">

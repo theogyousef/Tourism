@@ -46,6 +46,40 @@ public function addtrip()
 
 
 }
+public function addbooking()
+{
+    $adminModel = new adminModel();
+    $userid = $_POST["userid"];
+    $hotel = $_POST["hotel"];
+    $flight = $_POST["flight"];
+    $adminModel->addbooking($userid, $hotel, $flight );
+
+    
+    header("Location: bookings");
+
+
+}
+
+public function addtripbooking()
+{
+    $adminModel = new adminModel();
+    $conn = $this->getConn();
+    
+    $userid = $_POST["userid"];
+    $trip = $_POST["tripid"];
+    
+    $sql = "SELECT * from trips  where ID = '$trip'";
+    $resultbookings = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resultbookings);
+
+    $flight = $row['flightID'];
+    $hotel = $row['hotelID'];
+    $adminModel->addbooking($userid, $hotel, $flight );
+
+    header("Location: bookings");
+
+
+}
 public function updatehotel()
 {    $adminModel = new adminModel();
 
@@ -78,6 +112,24 @@ public function updatetrip()
 
 
 }
+
+public function updatebooking()
+{    $adminModel = new adminModel();
+
+
+    $id = $_POST["ID"];
+    $name = $_POST["user_id"];
+    $hotel = $_POST["hotel"];
+    $flight = $_POST["flight"];
+   
+    /// apply th query to db by pass to the handler func
+    $adminModel->updatebooking($id, $name, $hotel, $flight );
+    header("Location: bookings");
+
+
+}
+
+
 public function deletehotel()
 {    $adminModel = new adminModel();
 
@@ -96,6 +148,14 @@ public function deletetrip()
     $id = $_POST["id"];
     $adminModel->deletetrip($id);
     header("Location: admintrips");
+
+}
+public function deletebooking()
+{    $adminModel = new adminModel();
+
+    $id = $_POST["id"];
+    $adminModel->deletebooking($id);
+    header("Location: bookings");
 
 }
 public function deleteflight()

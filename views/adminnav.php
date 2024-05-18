@@ -110,6 +110,21 @@ if ($row["guest"] == 1) {
 
                     </div>
                 </li>
+                
+                <li class="dropdown" id="users">
+                    <a href="bookings">
+                        <i class="fas fa-link"></i>
+                        <div>Bookings</div>
+                    </a>
+                    <div class="dropdown-content">
+
+                        <a href="addbooking">Add booking</a>
+                        <a href="addtripbooking">Add Trip booking</a>
+
+
+
+                    </div>
+                </li>
                 <li class="dropdown" id="products">
                     <a href="admintrips">
                         <i class="fas fa-suitcase"></i>

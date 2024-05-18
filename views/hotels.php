@@ -131,7 +131,7 @@ include "header.php";
                                             </li>
                                         </ul>
                                         <div class="product-actions mt-3">
-                                            <button type="button" class="btn btn-secondary add-to-cart" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Cart</button>
+                                            <button type="button" class="btn btn-secondary add-to-cart" style="background-color: #0d6efd; border : none;"data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Cart</button>
                                             <button type="button" class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
                                         </div>
                                     </div>
