@@ -11,6 +11,14 @@ class fetchModle extends Model
         return $result;
     }
 
+    public function allflights()
+    {
+        $conn = $this->getConn();
+        $query = "SELECT * FROM flights ";
+        $result = mysqli_query($conn, $query);
+        return $result;
+    }
+
 
     public function getProductById($productId)
     {

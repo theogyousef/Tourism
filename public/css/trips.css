@@ -3,21 +3,21 @@
     align-items: center;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15); /* More visible shadow by default */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15); 
     margin-bottom: 20px;
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for shadow and transform */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; 
 }
 
 .trip-card:hover {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.25); /* Enhanced shadow on hover */
-    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 8px 12px rgba(0,0,0,0.25);
+    transform: translateY(-3px); 
 }
 
 .hotel-image {
     width: 30%;
     object-fit: cover;
-    height: 200px; /* Fixed height to maintain aspect ratio */
+    height: 200px; 
 }
 
 .trip-details {
@@ -30,11 +30,11 @@
 .trip-info, .flight-info {
     flex-grow: 1;
     padding: 0 15px;
-    border-left: 2px solid #dee2e6; /* Vertical line to separate sections */
+    border-left: 2px solid #dee2e6;
 }
 
 .trip-info {
-    border-left: none; /* Remove line from the first section */
+    border-left: none; 
 }
 
 .price {
@@ -53,11 +53,11 @@
 }
 
 .btn-details:hover {
-    background-color: darken(#03366d, 10%); /* Slightly darker on hover */
+    background-color: darken(#03366d, 10%); 
 }
 
 .label-available {
     font-size: 0.85rem;
-    color: #28a745; /* Green color for availability label */
+    color: #28a745; 
 }
 
