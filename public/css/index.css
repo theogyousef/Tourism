@@ -938,3 +938,64 @@ body {
     border-radius: 0 0 4px 4px;
     overflow: hidden;
 }
+
+
+.Content .product-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.detailsinfo {
+    font-size: 14px;
+    color: #666;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #012750;
+}
+
+.links .btn {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.arrow {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+
+.products-carousel .col-md-3 {
+    margin: 50px !important; 
+    margin-left: 50px;
+}
+
+.products-carousel .flight-card {
+    background-color: #fff; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 5px; 
+    padding: 20px; 
+    transition: transform 0.3s ease-in-out; 
+    margin-right: 50px;
+}
+
+.products-carousel .flight-card:hover {
+    transform: scale(1.05); 
+}
+
+.btn-book-now {
+    background-color: white !important;
+    color: #02244d !important; 
+    border: none; 
+    padding: 8px 16px; 
+    font-size: 14px;
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
+}
+
+.btn-book-now:hover {
+    background-color: #092e4b; 
+}

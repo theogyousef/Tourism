@@ -324,224 +324,40 @@ include "header.php";
     <div class="row">
         <div class="col-md text-center">
             <h6 class="text-center mb-4" style="font-weight: normal;">BOOK</h6>
-            <h1>Book Your Full Trip Now</h1>
+            <h1>Book Your Flight Now</h1>
         </div>
     </div>
-
     <div class="container products-carousel" style="margin-top: 5px;">
         <div class="row">
             <div class="slider">
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="../public/photos/aswan1.jpg" alt="newyork photo" class="pic-1" width="500px">
 
-                                <img src="../public/photos/aswan2.jpg" alt="sanfransisco photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Aswan&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Alexandria
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">7 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY5,376.88</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="../public/photos/Siwa-Oasis-Egypt-1.webp" alt="switzerland photo" class="pic-1" width="500px">
-                                <img src="../public/photos/aswan2.jpg" alt="Greece photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Siwa&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Aswan
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">4 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY2,657</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2022/05/el-cairo-torre-888.jpg" alt="Egypt photo" class="pic-1" width="500px">
-                                <img src="../public/photos/sharm.jpg" alt="Morocco photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Cairo&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Sharm-EL-Sheikh
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">3 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY5,130</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="../public/photos/alex.jpg" alt="London photo" class="pic-1" width="500px">
-                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/05/mount-sinai-sunrise-scaled.jpg?fit=4500%2C3000&ssl=1" alt="newyork photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Alexandria&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Sinai
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">7 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY5,840</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="../public/photos/dahab2.jpg" alt="Istanbul photo" class="pic-1" width="500px">
-                                <img src="../public/photos/marsa matrouh.jpg" alt="Paris photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Dahab&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;Marsa Matrouh
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">2 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY11,000</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="flight-image">
-                            <a href="" class="images">
-                                <img src="../public/photos/giza.jpg" alt="Maldives photo" class="pic-1" width="500px">
-                                <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/01/st-catherines-monastery-174446_1920.jpg?resize=1536%2C1024&ssl=1" alt="Dubai photo" class="pic-2" width="500px">
-                            </a>
-                            <div class="links">
-                                <div class="Icon">
-                                    <a href="#"><i class="bi bi-cart3"></i></i></a>
-                                    <span class="tooltiptext">Add to cart</span>
-                                </div>
-                                <div class="Icon">
-                                    <a href=""><i class="bi bi-heart"></i></i></a>
-                                    <span class="tooltiptext">Move to wishlist</span>
+                <?php
+                $result = $fetchModle->allflights();
+                if (mysqli_num_rows($result) > 0) {
+                    $flights = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    foreach ($flights as $flight) : ?>
+                        <div class="col-md-4">
+                            <div class="flight-card">
+                                <div class="Content">
+                                    <h3 class="product-title"><?php echo htmlspecialchars($flight['flight_dep']); ?> to <?php echo htmlspecialchars($flight['flight_arr']); ?></h3>
+                                    <p class="detailsinfo">
+                                        Depart: <?php echo htmlspecialchars($flight['dept_time']); ?>
+                                        <span class="arrow"><i class='bx bx-transfer-alt'></i></span>
+                                        Arrive: <?php echo htmlspecialchars($flight['arr_time']); ?>
+                                    </p>
+                                    <p class="price">Economy: <?php echo number_format($flight['eco_price'], 2) . ' EGP'; ?><br>
+                                        Business: <?php echo number_format($flight['bus_price'], 2) . ' EGP'; ?></p>
+                                    <div class="links">
+                                        <a href="#" class="btn btn-primary btn-book-now">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="Content">
-                            <h3 class="product-title">
-                                Giza&nbsp; &nbsp;<span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;saint catherine
-                            </h3>
-                            <p class="detailsinfo">
-                                <span class="typetrip">Round-trip</span> <span class="separate"></span> <span class="nofdays">8 days</span>
-                            </p>
-                            <div class="cost">
-                                <p class="lower-price">
-                                    From <span class="price">EGY7,109</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php endforeach;
+                } else {
+                    echo '<p>No flights found.</p>';
+                }
+                ?>
             </div>
         </div>
     </div>
