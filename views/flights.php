@@ -2,6 +2,26 @@
 require '../includes/config.php';
 require '../includes/Dbh.php';
 
+// include "header.php";
+require_once '../model/fetchModle.php';
+require_once '../controller/usercontroller.php';
+$usercontroller = new usercontroller();
+$fetchModle = new fetchModle();
+$conn = $usercontroller->getConn();
+if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+    $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION["login"] = true;
+    $_SESSION["id"] = $row["id"];
+} else if (!empty($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $row = mysqli_fetch_assoc($result);
+} else {
+    header("Location: login");
+}
+
+
 $dbh = new Dbh();
 $result = $dbh->query("SELECT * FROM flights");
 $flights = $result->fetch_all(MYSQLI_ASSOC);
@@ -139,6 +159,7 @@ $flights = $result->fetch_all(MYSQLI_ASSOC);
     <footer>
         <?php include "footer.php"; ?>
     </footer>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 </html>
