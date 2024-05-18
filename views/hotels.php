@@ -36,7 +36,6 @@ include "header.php";
     <title>Hotel Collection</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -118,25 +117,27 @@ include "header.php";
                 <?php if (!empty($hotels)) : ?>
                     <?php foreach ($hotels as $hotel) : ?>
                         <div class="col-md-3 mb-4">
-                            <div style="width: 300px;" class="card mb-4 product-card">
-                                <img src="<?php echo $hotel['photo']; ?>" class="card-img-top" alt="<?php echo $hotel['name']; ?>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $hotel['name']; ?></h5>
-                                    <li class="list-group-item"><?php echo $hotel['location']; ?></li>
-                                    <ul style="margin-left: 80px; font-weight: bold;" class="list-group list-group-flush">
-                                        <li class="list-group-item" style="display: flex; align-items: center;">
-                                            <?php echo number_format($hotel['price'], 2) . ' LE'; ?>
-                                            <p style="color: orange; margin-left: 5px; margin-bottom: 0;">/night</p>
-                                        </li>
-                                    </ul>
-                                    <div class="product-actions mt-3">
-                                        <button type="button" class="btn btn-primary add-to-cart" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Cart</button>
-                                        <button type="button" class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
+                            <a href="hotel-details?id=<?php echo $hotel['ID']; ?>" class="hotel-link" style="text-decoration: none; color: inherit;">
+                                <div style="width: 300px;" class="card mb-4 product-card">
+                                    <img src="<?php echo $hotel['photo']; ?>" class="card-img-top" alt="<?php echo $hotel['name']; ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $hotel['name']; ?></h5>
+                                        <li class="list-group-item"><?php echo $hotel['location']; ?></li>
+
+                                        <ul style="margin-left: 80px; font-weight: bold;" class="list-group list-group-flush">
+                                            <li class="list-group-item" style="display: flex; align-items: center;">
+                                                <?php echo number_format($hotel['price'], 2) . ' LE'; ?>
+                                                <p style="color: orange; margin-left: 5px; margin-bottom: 0;">/night</p>
+                                            </li>
+                                        </ul>
+                                        <div class="product-actions mt-3">
+                                            <button type="button" class="btn btn-secondary add-to-cart" style="background-color: #0d6efd; border : none;"data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Cart</button>
+                                            <button type="button" class="btn btn-secondary add-to-wishlist" data-hotel-id="<?php echo $hotel['ID']; ?>" data-hotel-name="<?php echo $hotel['name']; ?>" data-hotel-price="<?php echo $hotel['price']; ?>" data-hotel-image="<?php echo $hotel['photo']; ?>">Add to Wishlist</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-
                     <?php endforeach; ?>
                 <?php else : ?>
                     <p>No products found.</p>
@@ -144,42 +145,44 @@ include "header.php";
             </div>
         </div>
     </main>
+
     <script>
-    $(document).ready(function() {
-    $('.add-to-cart').click(function() {
-        var hotelData = {
-            id: $(this).data('hotel-id'),
-            type: 'hotel',
-            name: $(this).data('hotel-name'),
-            price: $(this).data('hotel-price'),
-            image: $(this).data('hotel-image')
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    const hotelName = this.getAttribute('data-hotel-name');
+                    const hotelPrice = this.getAttribute('data-hotel-price');
+                    const hotelImage = this.getAttribute('data-hotel-image');
 
-        $.ajax({
-            url: 'add_to_cart.php',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(hotelData),
-            success: function(response) {
-                var data = JSON.parse(response);
-                if (data.status === 'success') {
-                    alert(data.message);
-                } else {
-                    alert(data.message);
-                }
-                // Optionally, update the cart UI here
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-                alert('Failed to add hotel to cart.');
-            }
+                    fetch('add_to_cart.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: hotelId,
+                                name: hotelName,
+                                price: hotelPrice,
+                                image: hotelImage
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Optional: alert or update UI to show item added to cart
+                            } else {
+                                // Optional: alert or show error message
+                            }
+                        });
+                });
+            });
         });
-    });
-});
-
     </script>
 
-    <!-- <script src="../public/JS/collections.js"></script> -->
+     <!-- <script src="../public/JS/collections.js"></script> -->
 
     <!-- <script>
         $(document).ready(function() {
@@ -190,7 +193,6 @@ include "header.php";
         });
     </script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 <footer>
