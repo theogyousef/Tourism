@@ -102,6 +102,7 @@ include "adminnav.php";
                             <th>Date</th>
                             <th>hotel ID</th>
                             <th>flight ID</th>
+                            <th>status</th>
                             <th>Edit</th>
                             <th>Delete</th>
                            
@@ -119,7 +120,7 @@ include "adminnav.php";
                         echo "<tr>
         <td colspan='9'style='padding-top: 0px ;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;'><div style='margin-left: -55px;'  id='searchresulte'></div></td>
       </tr>";
-      $sql = "SELECT b.ID AS booking_id, b.user_id, b.flightID, b.hotelID, u.id, u.firstname, u.lastname, f.flight_dep, f.flight_arr, f.eco_price, f.flight_day, h.name AS hotel_name, h.price, h.duration
+      $sql = "SELECT b.ID AS booking_id, b.status , b.user_id, b.flightID, b.hotelID, u.id, u.firstname, u.lastname, f.flight_dep, f.flight_arr, f.eco_price, f.flight_day, h.name AS hotel_name, h.price, h.duration
       FROM bookings b
       JOIN flights f ON b.flightID = f.id
       JOIN users u ON b.user_id = u.id
@@ -140,6 +141,13 @@ include "adminnav.php";
 <td> " . $row["flight_day"]  . "</td>
 <td> " . $row["hotelID"]  . "</td>
 <td> " . $row["flightID"]  . "</td>
+"; ?>
+<?php if ($row['status'] == 1) {
+    echo "<td style='color:green;'> Active </td>";
+} else if ($row['status'] == 0) {
+    echo "<td style='color:red;'> Cancelled </td>";
+} ?>
+<?php echo "
 <td>  <a href='editbooking?id=" . $row["booking_id"] . "' style='color: orange;'> <span class='fas fa-edit'></span> </a> </td>
 <td> <a href='deletebooking?id=" . $row["booking_id"] . "' style='color: red;'> <span class='fas fa-trash-alt'></span> </a>  </td>
 

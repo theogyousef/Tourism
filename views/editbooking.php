@@ -133,7 +133,20 @@ if (mysqli_num_rows($result3) > 0) {
 
 
                         </div>
+                        <div class="mb-3">
+                            <label for="stock">Select a status:</label>
+                            <select class="form-control" name="status" required>
+                            <option value="" disabled selected> </option>
+                            <option value="<?php echo $tripdetails['status'] ?>" selected>
+                                    <?php echo $tripdetails['status'] ?>
+                                </option>  
+                                <option value="1">Active</option>;
+                                <option value="0">Cancelled</option>;
 
+                            </select>  
+
+
+                        </div>
                         <div class="mb-3">
                             <label for="stock">Select a flight :</label>
                             <select class="form-control" name="flight" required>
