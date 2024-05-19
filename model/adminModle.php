@@ -36,9 +36,9 @@ class adminModel extends Model
 
         mysqli_query($conn, $query);
     }
-    public function updatebooking($id, $name, $hotel, $flight )
+    public function updatebooking($id, $name, $hotel, $flight , $status)
     { $conn = $this->getConn();
-        $query = "update bookings set user_id ='$name',flightID ='$flight', hotelID ='$hotel'where id = '$id'";
+        $query = "update bookings set user_id ='$name',flightID ='$flight', hotelID ='$hotel' , status = '$status' where id = '$id'";
 
         mysqli_query($conn, $query);
     }
