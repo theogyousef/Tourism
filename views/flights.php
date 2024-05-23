@@ -22,11 +22,10 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
 $dbh = new Dbh();
 $result = $dbh->query("SELECT * FROM flights");
 $flights = $result->fetch_all(MYSQLI_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -34,17 +33,17 @@ $flights = $result->fetch_all(MYSQLI_ASSOC);
     <title>Flights</title>
     <link rel="stylesheet" href="../public/flights.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-                
-
 </head>
 
 <body>
-<header>
-<?php include "header.php"; ?>
+    <header>
+        <?php include "header.php"; ?>
         <style>
             <?php include "../public/css/flights.css"; ?>
         </style>
     </header>
+    <div class="container mt-4">
+            <h1>Flights Collection</h1>
 
     <div class="flight-view">
     <?php foreach ($flights as $flight) : 

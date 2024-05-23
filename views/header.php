@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index">
                 <img src="https://egymonuments.gov.eg/Style%20Library/images/new-logo_web.png" alt="Egypt Tourism" height="40" style="font-size: 200px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,13 +151,16 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                        <a class="nav-link" href="#" id="search-icon"><i class="bi bi-search"></i></a>
+                        <input type="text" id="search-input" placeholder="Search hotels or flights..." onkeyup="liveSearch()">
+                        <div id="searchResults"></div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-heart"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php"><i class="bi bi-cart"></i></a>
+                        <a class="nav-link" href="cart"><i class="bi bi-cart"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#" id="navbarDropdownSignIn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -188,4 +191,7 @@
         </div>
     </nav>
 
+<script>
+    <?php include "../public/js/indexSearch.js" ?>
+</script>
 </body>

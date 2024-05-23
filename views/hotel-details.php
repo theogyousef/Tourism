@@ -260,7 +260,7 @@ include "header.php";
                     const hotelPrice = this.getAttribute('data-hotel-price');
                     const hotelImage = this.getAttribute('data-hotel-image');
 
-                    fetch('add_to_wishlist.php', {
+                    fetch('add_to_cart.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -275,9 +275,9 @@ include "header.php";
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert('Hotel added to Cart!');
+                                // alert('Hotel added to Cart!');
                             } else {
-                                alert('Failed to add hotel to Cart.');
+                                // alert('Failed to add hotel to Cart.');
                             }
                         });
                 });

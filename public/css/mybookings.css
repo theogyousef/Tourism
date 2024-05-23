@@ -1,0 +1,22 @@
+.custom-btn {
+    background-color: #13315C !important; 
+    color: white !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    border: none !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    transition: background-color 0.3s !important;
+    margin-left: 20px;
+}
+.custom-btn:hover, .custom-btn:focus {
+    background-color: #245ea5 !important;
+    color: white;
+    text-decoration: none;
+}
+.custom-line {
+    height: 0.4px !important;  /* Keeps the line thin */
+    background-color: #ccc !important;  /* Light grey color */
+    width: 100%;  /* Line spans the full width of the container */
+    margin-top: 25px;  /* Top margin */
+    margin-bottom: 15px;  /* Bottom margin */
+}

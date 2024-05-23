@@ -10,16 +10,51 @@ class adminModel extends Model
 
         mysqli_query($conn, $query);
     }
-    public function updatehotel($id, $name, $price, $location)
-    { $conn = $this->getConn();
-        $query = "update hotels set name ='$name',price ='$price',location ='$location' where id = '$id'";
+
+    public function addtrip($name, $hotel, $flight )
+    {       $conn = $this->getConn();
+
+        $query = "insert into trips (name,hotelID,flightID) values (' $name','$hotel' ,'$flight')";
 
         mysqli_query($conn, $query);
     }
+    public function addbooking($userid, $hotel, $flight )
+    {       $conn = $this->getConn();
 
+        $query = "insert into bookings (user_id , hotelID ,flightID) values ('$userid','$hotel' ,'$flight')";
+        mysqli_query($conn, $query);
+    }
+    public function updatehotel($id, $name, $price, $location , $duration)
+    { $conn = $this->getConn();
+        $query = "update hotels set name ='$name',price ='$price',location ='$location' , duration = '$duration' where id = '$id'";
+
+        mysqli_query($conn, $query);
+    }
+    public function updatetrip($id, $name, $hotel, $flight )
+    { $conn = $this->getConn();
+        $query = "update trips set name ='$name',flightID ='$flight', hotelID ='$hotel'where id = '$id'";
+
+        mysqli_query($conn, $query);
+    }
+    public function updatebooking($id, $name, $hotel, $flight , $status)
+    { $conn = $this->getConn();
+        $query = "update bookings set user_id ='$name',flightID ='$flight', hotelID ='$hotel' , status = '$status' where id = '$id'";
+
+        mysqli_query($conn, $query);
+    }
     public function deletehotel($id)
     { $conn = $this->getConn();
         $query = "DELETE FROM hotels WHERE id = '$id'";
+        mysqli_query($conn, $query);
+    }
+    public function deletetrip($id)
+    { $conn = $this->getConn();
+        $query = "DELETE FROM trips WHERE id = '$id'";
+        mysqli_query($conn, $query);
+    }
+    public function deletebooking($id)
+    { $conn = $this->getConn();
+        $query = "DELETE FROM bookings WHERE id = '$id'";
         mysqli_query($conn, $query);
     }
     public function addflight($flight_dep, $flight_arr, $eco_price, $bus_price, $dept_time, $arr_time, $flight_day)

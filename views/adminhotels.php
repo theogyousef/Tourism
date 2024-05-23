@@ -100,6 +100,7 @@ include "adminnav.php";
                             <th>Name</th>
                             <th>Location</th>
                             <th>Price</th>
+                            <th>Duration</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -126,6 +127,8 @@ include "adminnav.php";
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["location"] . "</td>
                     <td>" . $row["price"] . "</td>
+                    <td>" . $row["duration"] . "</td>
+
                     "
 
 
@@ -155,7 +158,7 @@ include "adminnav.php";
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="../public/JS/productsearch.js"></script>
+    <script src="../public/JS/Hotelsearch.js"></script>
     <script src="../public/JS/admindasboard.js"></script>
 
 </body>

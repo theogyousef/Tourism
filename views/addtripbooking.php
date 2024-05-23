@@ -27,16 +27,31 @@ if ($row["guest"] == 1) {
 
 }
 
-if (isset($_POST["addhotel"])) {
-    $AdminFunctions->addhotel();
+if (isset($_POST["addproduct"])) {
+    $AdminFunctions->addtripbooking();
 }
 $dbh = new Dbh();
-$sql = "SELECT * FROM cities";
+
+$sql = "SELECT * FROM trips";
 $result = mysqli_query($conn, $sql);
-$cities = [];
+$trips = [];
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $cities[] = $row['city_name'];
+        $trips[] = [
+            'id' => $row['ID'],
+            'name' => $row['ID'] . ' - ' . $row['name']
+        ];
+    }
+}
+
+$sql3 = "SELECT * FROM users";
+$result3 = mysqli_query($conn, $sql3);
+$users = [];
+if (mysqli_num_rows($result3) > 0) {
+    while ($row = mysqli_fetch_assoc($result3)) {
+        if ($row["firstname"] != 'Guest') {
+            $users[] = ['id' => $row['id'], 'firstname' => $row['firstname'], 'lastname' => $row['lastname']];
+        }
     }
 }
 include "adminnav.php";
@@ -70,45 +85,36 @@ include "adminnav.php";
             <div class="formcard">
                 <div class="card-content form-container">
 
-                    <h1>ADD HOTEL</h1>
+                    <h1>ADD Trip Booking</h1>
                     <form method="POST" action="" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="stock">Select a Governorate:</label>
-                            <select class="form-control" name="governorate" required>
-                            <option value="" disabled selected> </option>
-                            <?php
-                                foreach ($cities as $city) {
-                                    echo "<option value='" . $city . "'>" . $city . "</option>";
-                                }?>
-                            </select>  
 
-
+                    <div class="mb-3">
+                            <label for="userid">Select a user:</label>
+                            <select class="form-control" name="userid" required>
+                                <option value="" disabled selected> </option>
+                                <?php foreach ($users as $user): ?>
+                                    <option value="<?php echo $user['id']; ?>">
+                                        <?php echo $user['id'] . ' - ' . $user['firstname'] . ' ' . $user['lastname']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="trip">Select a Trip:</label>
+                            <select class="form-control" name="tripid" required>
+                                <option value="" disabled selected> </option>
+                                <?php
+                                foreach ($trips as $trip) {
+                                    echo "<option value='" . $trip['id'] . "'>" . $trip['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
 
 
                         <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="text" class="form-control" name="price" required>
-                        </div>
-                     
-                        <div class="mb-3">
-                            <label class="form-label">duration in nights</label>
-                            <input type="text" class="form-control" name="duration" required>
-                        </div>
-                     
-                        <div class="mb-3">
-                            <label for="newProductImage" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="newProductImage"
-                                accept="image/png, image/gif, image/jpeg , image/webp" name="file" required>
-                        </div>
-                    
-                        <div class="mb-3">
-                            <input type="submit" name="addhotel" value="ADD Hotel"
+                            <input type="submit" name="addproduct" value="ADD Trip booking "
                                 style="background-color: #007BFF; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">
                         </div>
 

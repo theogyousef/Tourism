@@ -1,9 +1,32 @@
 <?php
-session_start();
+
 
 // Include necessary files
 require '../includes/config.php';
 require '../includes/Dbh.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// include "header.php";
+require_once '../model/fetchModle.php';
+require_once '../controller/usercontroller.php';
+$usercontroller = new usercontroller();
+$fetchModle = new fetchModle();
+$conn = $usercontroller->getConn();
+if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+    $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION["login"] = true;
+    $_SESSION["id"] = $row["id"];
+} else if (!empty($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $result = mysqli_query($conn, "SELECT a.*, p.*, u.* FROM addresses a JOIN permissions p ON a.user_id = p.user_id JOIN users u ON a.user_id = u.id WHERE a.user_id = '$id' AND u.id = '$id';");
+    $row = mysqli_fetch_assoc($result);
+} else {
+    header("Location: login");
+}
 
 if (isset($_GET['remove'])) {
     // Remove item from cart based on ID
@@ -64,7 +87,7 @@ if (isset($_GET['remove'])) {
                         $total += $product['price'];
                 ?>
                         <div class="col-md-12 mb-3">
-                            <div class="card">
+                            <div class="card" style="width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-2">
                                         <?php if (isset($product['image'])) : ?>
@@ -75,6 +98,13 @@ if (isset($_GET['remove'])) {
                                         <div class="card-body">
                                             <?php if (isset($product['name'])) : ?>
                                                 <h5 class="card-title"><?php echo $product['name']; ?></h5>
+                                                <h5 class="card-title"><a href="product?id=<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a></h5>
+                                            <?php endif; ?>
+                                            <?php if (isset($product['price'])) : ?>
+                                                <p class="card-text"><?php echo  number_format($product['price'],2); ?> EGP</p>
+                                            <?php endif; ?>
+                                            <?php if (isset($product['options'])) : ?>
+                                                <p class="card-text"><?php echo $product['options']; ?></p>
                                             <?php endif; ?>
                                             <p class="card-text"><?php echo $product['price']; ?> EGP</p>
                                         </div>
@@ -123,7 +153,7 @@ if (isset($_GET['remove'])) {
 
             <div class="row mt-4">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                    <h3>Total: <?php echo $total; ?> EGP</h3>
+                    <h3>Total: <?php echo  number_format($total,2); ?> EGP</h3>
                     <?php $_SESSION['total'] = $total; ?>
                     <div>
                         <?php if (empty($_SESSION['products']) && empty($_SESSION['flights'])) : ?>
@@ -143,6 +173,8 @@ if (isset($_GET['remove'])) {
         <!-- Include footer content -->
         <?php include "footer.php"; ?>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

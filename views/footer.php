@@ -35,10 +35,7 @@
                     </div>
 
 
-                    <div class="col-lg-3 col-md-6 footer-contact">
-                        <img src="https://i0.wp.com/www.touristegypt.com/wp-content/uploads/2023/03/luxor-egypt.jpg?resize=1024%2C683&ssl=1" alt="Company Logo" style="height: 300px; opacity: 0.5;">
-
-                    </div>
+                 
 
                     <div class="col-lg-3 col-md-6 footer-links" style="margin-left: 200px;">
                         <h4>Our Services</h4>

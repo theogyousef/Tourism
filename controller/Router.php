@@ -16,7 +16,7 @@ class Routere
             $pattern = '/\/tourism\/views\/(cart_display(?:\?remove=)?)(\d*)/';
         } else {
 
-            $pattern = '/\/tourism\/views\/(deleteflight|edithotels|deletehotel|edituser|deleteuser|makeuser|makeadmin|hotel-details|editflight)\?id=(\d+)/';
+            $pattern = '/\/tourism\/views\/(deleteflight|edithotels|deletehotel|edituser|deleteuser|makeuser|makeadmin|hotel-details|editflight|deletetrip|edittrip|editbooking|deletebooking)\?id=(\d+)/';
         }
         if (preg_match($pattern, $path, $matches)) {
             // Extract the 'id' value from the matched URL
@@ -62,7 +62,14 @@ class Routere
             require '../views/login.php';
             exit();
         }
-       
+        elseif ($path === '/tourism/views/bookings') {
+            require '../views/bookings.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/addbooking') {
+            require '../views/addbooking.php';
+            exit();
+        }
         elseif ($path === '/tourism/views/signup') {
             require '../views/signup.php';
             exit();
@@ -88,6 +95,10 @@ class Routere
         }
         elseif ($path === '/tourism/views/hotels') {
             require '../views/hotels.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/trips') {
+            require '../views/trips.php';
             exit();
         }
         elseif ($path === '/tourism/views/users') {
@@ -116,9 +127,16 @@ class Routere
         }   elseif ($path === '/tourism/views/addhotels') {
             require '../views/addhotels.php';
             exit();
+        }elseif ($path === '/tourism/views/cart') {
+            require '../views/cart.php';
+            exit();
         }
         elseif ($path === '/tourism/views/addflight') {
             require '../views/addflight.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/addtripbooking') {
+            require '../views/addtripbooking.php';
             exit();
         }
         elseif ($path === '/tourism/views/Adminphotos?id=' . $id) {
@@ -136,6 +154,18 @@ class Routere
             exit();
         }elseif ($path === '/tourism/views/editreview?id=' . $id) {
             require '../views/editreview.php';
+            exit();
+        }elseif ($path === '/tourism/views/edittrip?id=' . $id) {
+            require '../views/edittrip.php';
+            exit();
+        }elseif ($path === '/tourism/views/deletetrip?id=' . $id) {
+            require '../views/deletetrip.php';
+            exit();
+        }elseif ($path === '/tourism/views/editbooking?id=' . $id) {
+            require '../views/editbooking.php';
+            exit();
+        }elseif ($path === '/tourism/views/deletebooking?id=' . $id) {
+            require '../views/deletebooking.php';
             exit();
         } elseif ($path === '/tourism/views/changepictures?id=' . $id) {
             require '../views/changepictures.php';

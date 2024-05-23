@@ -102,6 +102,7 @@ include "adminnav.php";
                             <th>Arrival</th>
                             <th>economy Price</th>
                             <th>business Price</th>
+                            <th>date</th>
                             <th>edit</th>
                             <th>Delete</th>
                         </tr>
@@ -131,7 +132,8 @@ include "adminnav.php";
                     <td>" . $row["arr_time"] . "</td>
                     <td>" . $row["eco_price"] . "</td>
                     <td>" . $row["bus_price"] . "</td>
-                    
+                    <td>" . $row["flight_day"] . "</td>
+
                     "
 
 
@@ -161,7 +163,8 @@ include "adminnav.php";
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="../public/JS/productsearch.js"></script>
+
+    <script src="../public/JS/flightsearch.js"></script>
     <script src="../public/JS/admindasboard.js"></script>
 
 </body>

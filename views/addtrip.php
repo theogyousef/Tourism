@@ -27,16 +27,25 @@ if ($row["guest"] == 1) {
 
 }
 
-if (isset($_POST["addhotel"])) {
-    $AdminFunctions->addhotel();
+if (isset($_POST["addproduct"])) {
+    $AdminFunctions->addtrip();
 }
 $dbh = new Dbh();
-$sql = "SELECT * FROM cities";
+$sql = "SELECT * FROM hotels";
 $result = mysqli_query($conn, $sql);
-$cities = [];
+$hotels = [];
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $cities[] = $row['city_name'];
+        $hotels[] =$row['ID'] . ' - ' . $row['name'] .'  (' . $row['location'] . ')';
+    }
+}
+
+$sql2 = "SELECT * FROM flights";
+$result2 = mysqli_query($conn, $sql2);
+$flights = [];
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $flights[] = $row['id'] . ' - ' .$row['flight_dep'] . ' to  ' . $row['flight_arr'] ;
     }
 }
 include "adminnav.php";
@@ -70,45 +79,40 @@ include "adminnav.php";
             <div class="formcard">
                 <div class="card-content form-container">
 
-                    <h1>ADD HOTEL</h1>
+                    <h1>ADD Trip</h1>
                     <form method="POST" action="" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="stock">Select a Governorate:</label>
-                            <select class="form-control" name="governorate" required>
+                            <label for="stock">Select an hotel:</label>
+                            <select class="form-control" name="hotel" required>
                             <option value="" disabled selected> </option>
                             <?php
-                                foreach ($cities as $city) {
-                                    echo "<option value='" . $city . "'>" . $city . "</option>";
+                                foreach ($hotels as $hotel) {
+                                    echo "<option value='" . $hotel . "'>" . $hotel . "</option>";
                                 }?>
                             </select>  
 
 
                         </div>
 
+                        <div class="mb-3">
+                            <label for="stock">Select a flight :</label>
+                            <select class="form-control" name="flight" required>
+                            <option value="" disabled selected> </option>
+                            <?php
+                                foreach ($flights as $flight) {
+                                    echo "<option value='" . $flight . "'>" . $flight . "</option>";
+                                }?>
+                            </select>  
 
 
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="text" class="form-control" name="price" required>
                         </div>
-                     
                         <div class="mb-3">
-                            <label class="form-label">duration in nights</label>
-                            <input type="text" class="form-control" name="duration" required>
-                        </div>
-                     
-                        <div class="mb-3">
-                            <label for="newProductImage" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="newProductImage"
-                                accept="image/png, image/gif, image/jpeg , image/webp" name="file" required>
-                        </div>
-                    
-                        <div class="mb-3">
-                            <input type="submit" name="addhotel" value="ADD Hotel"
+                            <input type="submit" name="addproduct" value="ADD Product"
                                 style="background-color: #007BFF; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">
                         </div>
 
