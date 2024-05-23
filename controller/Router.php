@@ -42,6 +42,22 @@ class Routere
             require '../views/flights.php';
             exit();
         }
+        elseif ($path === '/tourism/views/trip') {
+            require '../views/tripp.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/checkout') {
+            require '../views/checkout.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/cart') {
+            require '../views/cart.php';
+            exit();
+        }
+        elseif ($path === '/tourism/views/myBookings') {
+            require '../views/myBookings.php';
+            exit();
+        }
         elseif ($path === '/tourism/views/login') {
             require '../views/login.php';
             exit();
