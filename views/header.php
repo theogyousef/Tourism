@@ -140,14 +140,14 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="flights">Flights</a>
+                        <a class="nav-link" href="trip">Plan your trip</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="hotels">Hotels</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="trips">Trips</a>
-                    </li>
+                        <a class="nav-link" href="flights">Flights</a>
+                    </li>   
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -172,8 +172,7 @@
                                 <?php if (isset($row) && isset($row["guest"]) && $row["guest"] != 1) { ?>
 
                                     <li><a class="dropdown-item" href="profilesettings">profile settings </a></li>
-                                    <li><a class="dropdown-item" href="mybookings">My bookings </a></li>
-
+                                    <li><a class="dropdown-item" href="myBookings">my bookings </a></li>
                                     <?php if ($row["admin"] == 1) {
                                         echo ' <li><a class="dropdown-item" href="admindashboard">Admin dashboard </a></li> ';
                                     } ?>

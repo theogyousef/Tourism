@@ -1,12 +1,10 @@
 <?php
 require '../includes/config.php';
 require '../includes/Dbh.php';
-
-// include "header.php";
-require_once '../model/fetchModle.php';
 require_once '../controller/usercontroller.php';
+
 $usercontroller = new usercontroller();
-$fetchModle = new fetchModle();
+
 $conn = $usercontroller->getConn();
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
     $result = mysqli_query($conn, " SELECT p.*, u.* FROM permissions p JOIN users u ON p.user_id = u.id WHERE p.guest = '1' ");
@@ -20,7 +18,6 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
 } else {
     header("Location: login");
 }
-
 
 $dbh = new Dbh();
 $result = $dbh->query("SELECT * FROM flights");
@@ -48,118 +45,151 @@ $flights = $result->fetch_all(MYSQLI_ASSOC);
     <div class="container mt-4">
             <h1>Flights Collection</h1>
 
-            <div class="row mb-3" id="filters">
-                <div class="col-md-2">
-                    <form class="filter" id="filterF" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Availability" name="availability" data-form-id="filterF">
-                            <option value="">Availability</option>
-                            <option value="1">Available</option>
-                            <option value="2">Full !</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="col-md-2">
-                    <form class="filter" id="filterCategory" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Category" name="category" data-form-id="filterCategory">
-                            <option value="">Rating Stars</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <!-- Add more categories as needed -->
-                        </select>
-                    </form>
-                </div>
-
-                <div class="col-md-2">
-                    <form class="filter" id="filterForm" method="post">
-                        <select class="form-select filter-select filter-dropdown" aria-label="Price" name="price" data-form-id="filterForm">
-                            <option value="">Price</option>
-                            <option value="4">Highest To Lowest</option>
-                            <option value="5">Lowest To Highest</option>
-                            <option value="1">Under 10000</option>
-                            <option value="2">10000 to 40000</option>
-                            <option value="3">40000 and above</option>
-                        </select>
-                    </form>
-                </div>
-
-                <div class="col-md-2" id="reset">
-                    <form method="post" action="">
-                        <div class="col-md-2">
-                            <button name="reset" type="submit" class="btn btn-primary">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="container mb-3 mt-3">
-                <button class="btn btn-light btn-grid">
-                    <i class="bi bi-grid-3x3-gap"></i>
-                </button>
-
-                <button class="btn btn-light btn-list">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
+    <div class="flight-view">
+    <?php foreach ($flights as $flight) : 
+        $deptTimeInteger = strtotime($flight['dept_time']);
+        $arrTimeInteger = strtotime($flight['arr_time']);
+        $timeDiff = $arrTimeInteger - $deptTimeInteger;
+        if ($timeDiff >= 0){
+        $hours = floor($timeDiff / 3600);
+        $min = floor(($timeDiff % 3600) / 60);
+        $min = str_pad($min, 2, '0', STR_PAD_LEFT);
+        }
+        else{
+        $hours = floor($timeDiff / 3600) + 24;
+        $min = floor(($timeDiff % 3600) / 60);
+        $min = str_pad($min, 2, '0', STR_PAD_LEFT);
+        }
+        ?>
+      <div class="flight-container">
+      <div class="flight-info-group">
+        <div class="flight-details">
+          <div class="flight-time">
+            <p class="departure-time"> <?php echo date('h:i A', $deptTimeInteger); ?></p>
+            <p class="flight-dep"><?php echo $flight['flight_dep']; ?></p>
+          </div>
+          
+          <div class="flight-separator"> 
+            <p class="flight-duration"> <?php echo $hours . "h" . " " . $min . "m" ?> </p>
+          </div>
+         
+          <div class="flight-time">
+            <p class="arrival-time"> <?php echo date('h:i A',$arrTimeInteger); ?></p>
+            <p class="flight-arr"><?php echo $flight['flight_arr']; ?></p>
+          </div>
         </div>
-    <div class="container products-carousel" style="margin-top: 5px;">
-        <div class="row">
-            <?php foreach ($flights as $flight):
-                $deptTime = strtotime($flight['dept_time']);
-                $arrTime = strtotime($flight['arr_time']);
-                $duration = gmdate('H:i', $arrTime - $deptTime);
-                ?>
-                <div class="col-md-3">
-                    <div class="flights">
-                        <div class="Content">
-                            <div class="details">
-                                <h3 class="product-title route">
-                                    <?php echo $flight['flight_dep']; ?>&nbsp;&nbsp;
-                                    <span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;
-                                    <?php echo $flight['flight_arr']; ?>
-                                </h3>
-                                <h3 class="product-title time">
-                                    <?php echo date('h:i A', $deptTime); ?>&nbsp;&nbsp;
-                                    <span class="arrow"><i class='bx bx-transfer-alt'></i></span>&nbsp;
-                                    <?php echo date('h:i A', $arrTime); ?>
-                                </h3>
-                                <p class="detailsinfo" style="margin-bottom: 0;">
-                                    <span class="typetrip">Round-trip</span>
-                                    <span class="separate"></span>
-                                    <span class="nofdays"><?php echo $duration . ' Hrs'; ?></span>
-                                </p>
-                                <p class="detailsinfo" style="margin-top: 0; padding:0;">
-                                    <span class="typetrip"><?php echo $flight['flight_day']; ?></span>
-                                
-                                </p>
-                                
-                            <ul class="">
-                                <li class="list-group-item">
-                                    <p class="lower-price">
-                                        <span class="from-text">From</span>
-                                        <span
-                                            class="price"><?php echo number_format($flight['eco_price'], 2) . ' LE'; ?></span>
-                                    </p>
-                                </li>
+        <a href ="#" class="flight-details-link"><span>Flight Details</span></a> 
+        <div class="flight-price-container">
+                <p class="eco-price"> <?php echo number_format($flight['eco_price'], 0, '', ',') . "  " .  "EGP"; ?></p>
+                <div class="dropdown-container">
+            
+                <div class="dropdown-card" id = "eco-card">
+                
+                            <h3>Economy Classic</h3>
+                            <p><strong><?php echo number_format($flight['eco_price'], 0, '', ',') . " EGP"; ?></strong></p>
+                            <p>Total for all passengers</p>
+                            <form action="action.php" method="POST">
+                                    <input type="hidden" name="flight_id" value="<?php echo $flight['id']; ?>">
+                                    <input type="hidden" name="flight_dep" value="<?php echo $flight['flight_dep']; ?>">
+                                    <input type="hidden" name="flight_arr" value="<?php echo $flight['flight_arr']; ?>">
+                                    <input type="hidden" name="flight_price" value="<?php echo $flight['eco_price']; ?>">
+                                    <button type="submit" class="btn btn-secondary add-to-cart">Select Fare</button>
+                                </form>
+                            <p>Earn 639 Avios</p>
+                            <ul>
+                                <li>Flexibility to make 1 change</li>
+                                <li>Cancellation within 24hrs of booking without fees</li>
+                                <li>Checked baggage: 2 pieces, 23 kg each</li>
+                                <li>Hand baggage: 1 piece, 7 kg</li>
+                                <li>Seat selection for a fee</li>
+                                <li>Upgrade with Avios</li>
                             </ul>
-                            </div>
-
-
-                            <div class="product-actions mt-3">
-                            
-                                <button  class="btn btn-primary">Book Now</button>
-                                <button class="btn btn-secondary add-to-wishlist">Add to Wishlist</button>
-                            </div>
                         </div>
-                    </div>
+                      
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
 
+            </div>
+            <div class="flight-price-container">
+                <p class="bus-price"> <?php echo number_format($flight['bus_price'], 0, '', ',') . "  " . "EGP"; ?></p>
+                <div class="dropdown-container">
+                <div class="dropdown-card"  id = "bus-card">
+                            <h3>Business Class</h3>
+                            <p><strong><?php echo number_format($flight['bus_price'], 0, '', ',') . " EGP"; ?></strong></p>
+                            <p>Total for all passengers</p>
+                            <form action="action.php" method="POST">
+                                    <input type="hidden" name="flight_id" value="<?php echo $flight['id']; ?>">
+                                    <input type="hidden" name="flight_dep" value="<?php echo $flight['flight_dep']; ?>">
+                                    <input type="hidden" name="flight_arr" value="<?php echo $flight['flight_arr']; ?>">
+                                    <input type="hidden" name="flight_price" value="<?php echo $flight['eco_price']; ?>">
+                                    <button type="submit" class="btn btn-secondary add-to-cart">Select Fare</button>
+                                </form>
+                            <p>Earn 1,200 Avios</p>
+                            <ul>
+                                <li>Flexibility to make unlimited changes</li>
+                                <li>Free cancellation at any time</li>
+                                <li>Checked baggage: 3 pieces, 32 kg each</li>
+                                <li>Hand baggage: 2 pieces, 10 kg each</li>
+                                <li>Seat selection included</li>
+                                <li>Upgrade with Avios</li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+            </div>
+      </div>
+     
+    <?php endforeach; ?>
+  </div>
     <footer>
         <?php include "footer.php"; ?>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+     document.querySelectorAll('.flight-price-container').forEach(container => {
+      container.addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        const flightContainer = this.closest('.flight-container');
+        const dropdown = this.querySelector('.dropdown-container');
+        const activeDropdown = flightContainer.querySelector('.flight-price-container.active .dropdown-container');
+
+        if (activeDropdown && activeDropdown !== dropdown) {
+            activeDropdown.style.display = 'none';
+            activeDropdown.closest('.flight-price-container').classList.remove('active');
+        }
+
+        if (this.classList.contains('active')) {
+            this.classList.remove('active');
+            dropdown.style.display = 'none';
+            flightContainer.style.height = 'auto';
+        } else {
+            this.classList.add('active');
+            dropdown.style.display = 'block';
+            const flightDetailsHeight = flightContainer.querySelector('.flight-details').offsetHeight;
+            const dropdownHeight = this.querySelector('.dropdown-container').offsetHeight;
+            const fullHeight = flightDetailsHeight + dropdownHeight + 450; 
+            flightContainer.style.height = fullHeight + 'px';
+        }
+    });
+    container.addEventListener('click', function (event) {
+       
+        if (event.target.matches('#select-fare-button')) {
+           
+            alert('You clicked the Select fare button!');
+        }
+    });
+    container.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    this.closest('form').submit();
+                });
+            });
+        });
+
+   
+
+
+
+</script>
 
 </body>
 </html>
